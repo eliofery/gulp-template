@@ -1,0 +1,36 @@
+* text eol=lf
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.tif   binary
+*.tiff  binary
+*.ico   binary
+*.svg   binary
+#*.svg  text
+*.eps   binary
+*.mo    binary
+*.po    binary
+
+*.woff  binary
+*.woff2 binary
+
+*.doc     diff=astextplain
+*.docx    diff=astextplain
+*.dot     diff=astextplain
+*.pdf     diff=astextplain
+*.rtf     diff=astextplain
+*.md      text
+*.tex     text
+*.adoc    text
+*.textile text
+*.mustache  text
+*.csv       text
+*.tab       text
+*.tsv       text
+*.sql       text
+
+.gitattributes export-ignore
+.gitignore export-ignore
