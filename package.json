@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,29 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/register": "^7.22.5",
     "core-js": "^3.31.1",
-    "gulp": "^4.0.2"
+    "editorconfig-checker": "^5.1.1",
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "gulp": "^4.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "pug-lint": "^2.7.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.0.1"
+  },
+  "lint-staged": {
+    "*": "editorconfig-checker --exclude '.git|.husky|node_modules|.eslintcache'",
+    "src/pug/**/*.pug": "pug-lint --fix",
+    "src/scss/**/*.scss": "stylelint --fix",
+    "*.js": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
   }
 }
