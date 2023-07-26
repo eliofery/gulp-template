@@ -1,6 +1,6 @@
 {
   "name": "gulp-template",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Gulp сборка для продуктивной верстки",
   "keywords": [
     "gulp",
@@ -12,7 +12,8 @@
   "scripts": {
     "prepare": "husky install",
     "build": "gulp build --prod",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "proxy": "gulp proxy"
   },
   "browserslist": [
     "last 2 version",
@@ -32,6 +33,7 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/register": "^7.22.5",
+    "browser-sync": "^2.29.3",
     "core-js": "^3.31.1",
     "editorconfig-checker": "^5.1.1",
     "eslint": "^8.45.0",
