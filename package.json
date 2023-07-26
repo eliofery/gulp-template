@@ -1,14 +1,24 @@
 {
   "name": "gulp-template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.5",
+  "description": "Gulp сборка для продуктивной верстки",
+  "keywords": ["gulp", "pug", "webpack", "scss", "svg-sprite"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
-  "keywords": [],
-  "author": "",
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eliofery/gulp-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Eliofery/gulp-template/issues"
+  },
+  "homepage": "https://github.com/Eliofery/gulp-template#readme",
+  "author": "Sergio Eliofery",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.9",
