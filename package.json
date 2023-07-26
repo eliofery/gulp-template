@@ -1,10 +1,18 @@
 {
   "name": "gulp-template",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Gulp сборка для продуктивной верстки",
-  "keywords": ["gulp", "pug", "webpack", "scss", "svg-sprite"],
+  "keywords": [
+    "gulp",
+    "pug",
+    "webpack",
+    "scss",
+    "svg-sprite"
+  ],
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "gulp build --prod",
+    "dev": "gulp watch"
   },
   "browserslist": [
     "last 2 version",
@@ -30,6 +38,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",

@@ -1,12 +1,19 @@
-// Пользовательские скрипты
+// Сторонние библиотеки
+import { series } from 'gulp'
+
+// Таски
+import clear from './gulp/tasks/clear'
+
+// Конфиги
 import config from './gulp/config'
 
 // Определяем окружения сборки dev или prod
 config.setEnv()
 
-export default done => {
-  console.log(config.isDev)
-  console.log(config.isProd)
+// Сборка проекта
+export const build = series(clear)
 
-  done()
-}
+// Слежение за изменением файлов
+export const watch = series(build)
+
+export default watch
