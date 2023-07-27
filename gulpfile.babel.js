@@ -1,9 +1,10 @@
 // Сторонние библиотеки
-import { series } from 'gulp'
+import { series, parallel } from 'gulp'
 
 // Таски
 import clear from './gulp/tasks/clear'
 import server from './gulp/tasks/server'
+import { webpackBuild, webpackWatch } from './gulp/tasks/webpack'
 
 // Конфиги
 import config from './gulp/config'
@@ -15,9 +16,14 @@ config.setEnv()
 export const proxy = server
 
 // Сборка проекта
-export const build = series(clear)
+export const build = series(clear, webpackBuild)
 
 // Слежение за изменением файлов
-export const watch = series(build, server)
+export const watch = series(
+  build,
+  server,
+
+  parallel(webpackWatch),
+)
 
 export default watch

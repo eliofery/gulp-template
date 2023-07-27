@@ -6,9 +6,7 @@ module.exports = {
     jquery: false,
   },
   extends: ['airbnb-base'],
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-  },
+  parser: '@babel/eslint-parser',
   rules: {
     indent: ['off', 2],
     'import/no-extraneous-dependencies': [
@@ -47,5 +45,14 @@ module.exports = {
     'global-require': 'off',
     semi: ['error', 'never'],
     'arrow-parens': ['error', 'as-needed'],
+    'no-underscore-dangle': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', './src/js']],
+        extensions: ['.js'],
+      },
+    },
   },
 }
