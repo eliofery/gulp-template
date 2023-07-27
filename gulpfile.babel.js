@@ -5,6 +5,7 @@ import { series, parallel } from 'gulp'
 import clear from './gulp/tasks/clear'
 import server from './gulp/tasks/server'
 import { webpackBuild, webpackWatch } from './gulp/tasks/webpack'
+import { stylesBuild, stylesWatch } from './gulp/tasks/styles'
 
 // Конфиги
 import config from './gulp/config'
@@ -16,14 +17,14 @@ config.setEnv()
 export const proxy = server
 
 // Сборка проекта
-export const build = series(clear, webpackBuild)
+export const build = series(clear, stylesBuild, webpackBuild)
 
 // Слежение за изменением файлов
 export const watch = series(
   build,
   server,
 
-  parallel(webpackWatch),
+  parallel(stylesWatch, webpackWatch),
 )
 
 export default watch

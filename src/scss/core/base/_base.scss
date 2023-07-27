@@ -1,0 +1,63 @@
+@use "sass:math";
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+
+  min-width: $min-screen;
+  margin: 0;
+
+  color: rgb(var(--theme-text));
+  font-size: $fz;
+  font-family: $font-primary;
+  line-height: $lh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: rgb(var(--theme-bg));
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  @include button;
+}
+
+// h1 ... h6
+@each $headline, $size in $headlines {
+  $margin: $size * $lh;
+
+  #{$headline} {
+    margin: $margin 0 math.div($margin, 2);
+
+    font-weight: 500;
+    font-size: $size;
+  }
+}
+
+strong,
+b {
+  font-weight: 500;
+}
+
+.sr-only {
+  @include sr-only;
+}

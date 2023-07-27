@@ -1,0 +1,20 @@
+@use "sass:map";
+
+.container {
+  width: 100%;
+  max-width: map.get($container-sizes, desktop);
+  margin: 0 auto;
+  padding: 0 $container-grid;
+}
+
+@include from(mobile) {
+  .container {
+    padding: 0 $container-grid * 2;
+  }
+}
+
+@include from(desktop) {
+  .container {
+    padding: 0 $container-grid * 3;
+  }
+}
