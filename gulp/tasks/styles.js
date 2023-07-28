@@ -5,7 +5,7 @@
  */
 
 // Сторонние библиотеки
-import { src, dest, watch } from 'gulp' // gulp плагин
+import { src, dest, watch, series } from 'gulp' // gulp плагин
 import plumber from 'gulp-plumber' // перехватывает ошибки
 import notify from 'gulp-notify' // уведомляет об ошибках
 import sassGlob from 'gulp-sass-glob' // позволяет использовать /**/*.scss конструкцию
@@ -16,6 +16,7 @@ import autoPrefixer from 'autoprefixer' // автоматически добав
 import cssnano from 'cssnano' // минифицирует css файл
 import postcssCustomMedia from 'postcss-custom-media' // группирует стили под общими медиа запросами
 import comments from 'postcss-discard-comments' // группирует стили под общими медиа запросами
+import { pugBuild } from './pug' // чтобы pug обновлял критические стили
 
 // Конфиги
 import config from '../config'
@@ -61,5 +62,5 @@ export const stylesBuild = () => {
 
 // Слежение за изменением файлов
 export const stylesWatch = () => {
-  watch(`${config.src.scss}/**/*.{scss,sass}`, stylesBuild)
+  watch(`${config.src.scss}/**/*.{scss,sass}`, series(stylesBuild, pugBuild))
 }

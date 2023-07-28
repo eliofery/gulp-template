@@ -50,7 +50,7 @@ const spriteMono = () =>
       }),
     )
     .pipe(concat('sprite-mono.svg')) // объединение файлов
-    .pipe(dest(config.build.images)) // исходящий файл
+    .pipe(dest(config.src.assets.images)) // исходящий файл
     .pipe(browserSync.stream()) // обновление страницы в браузере
 
 // Создание цветного svg спрайта
@@ -81,7 +81,7 @@ const spriteMulti = () =>
       }),
     )
     .pipe(concat('sprite-multi.svg')) // объединение файлов
-    .pipe(dest(config.build.images)) // исходящий файл
+    .pipe(dest(config.src.assets.images)) // исходящий файл
     .pipe(browserSync.stream()) // обновление страницы в браузере
 
 // Сборка всех тасков

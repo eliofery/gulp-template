@@ -9,6 +9,7 @@ import { stylesBuild, stylesWatch } from './gulp/tasks/styles'
 import { spritesBuild, spritesWatch } from './gulp/tasks/sprites'
 import { imagesBuild, imagesWatch } from './gulp/tasks/images'
 import { assetsBuild, assetsWatch } from './gulp/tasks/assets'
+import { pugBuild, pugWatch } from './gulp/tasks/pug'
 
 // Конфиги
 import config from './gulp/config'
@@ -23,6 +24,7 @@ export const proxy = server
 export const build = series(
   clear,
   spritesBuild,
+  pugBuild,
   stylesBuild,
   webpackBuild,
   imagesBuild,
@@ -34,7 +36,14 @@ export const watch = series(
   build,
   server,
 
-  parallel(spritesWatch, stylesWatch, webpackWatch, imagesWatch, assetsWatch),
+  parallel(
+    spritesWatch,
+    pugWatch,
+    stylesWatch,
+    webpackWatch,
+    imagesWatch,
+    assetsWatch,
+  ),
 )
 
 export default watch
