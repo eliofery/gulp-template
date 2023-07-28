@@ -1,0 +1,21 @@
+.icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+
+  background-repeat: no-repeat;
+
+  background-size: 50px;
+}
+
+.icon--snow {
+  background-image: url("../img/sprite-mono.svg#icon-snow-view");
+}
+
+.icon--sun {
+  background-image: url("../img/sprite-mono.svg#icon-sun-view");
+}
+
+.icon--user {
+  background-image: url("../img/sprite-multi.svg#icon-user-view");
+}

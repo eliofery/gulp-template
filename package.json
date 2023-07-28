@@ -1,6 +1,6 @@
 {
   "name": "gulp-template",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Gulp сборка для продуктивной верстки",
   "keywords": [
     "gulp",
@@ -44,8 +44,10 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",
+    "files-exist": "^1.1.0",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
     "gulp-if": "^3.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
@@ -53,6 +55,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-sass-glob": "^1.1.0",
     "gulp-strip-comments": "^2.5.2",
+    "gulp-svg-symbol-view": "^1.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "postcss-custom-media": "^10.0.0",
