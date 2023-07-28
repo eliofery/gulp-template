@@ -1,6 +1,6 @@
 {
   "name": "gulp-template",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Gulp сборка для продуктивной верстки",
   "keywords": [
     "gulp",
@@ -64,6 +64,7 @@
     "husky": "^8.0.3",
     "imagemin-pngquant": "^9.0.2",
     "lint-staged": "^13.2.3",
+    "merge-stream": "^2.0.0",
     "postcss-custom-media": "^10.0.0",
     "postcss-discard-comments": "^6.0.0",
     "prettier": "^3.0.0",
@@ -88,6 +89,7 @@
     ]
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "slick-carousel": "^1.8.1"
   }
 }

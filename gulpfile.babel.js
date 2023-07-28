@@ -8,6 +8,7 @@ import { webpackBuild, webpackWatch } from './gulp/tasks/webpack'
 import { stylesBuild, stylesWatch } from './gulp/tasks/styles'
 import { spritesBuild, spritesWatch } from './gulp/tasks/sprites'
 import { imagesBuild, imagesWatch } from './gulp/tasks/images'
+import { assetsBuild, assetsWatch } from './gulp/tasks/assets'
 
 // Конфиги
 import config from './gulp/config'
@@ -25,6 +26,7 @@ export const build = series(
   stylesBuild,
   webpackBuild,
   imagesBuild,
+  assetsBuild,
 )
 
 // Слежение за изменением файлов
@@ -32,7 +34,7 @@ export const watch = series(
   build,
   server,
 
-  parallel(spritesWatch, stylesWatch, webpackWatch, imagesWatch),
+  parallel(spritesWatch, stylesWatch, webpackWatch, imagesWatch, assetsWatch),
 )
 
 export default watch

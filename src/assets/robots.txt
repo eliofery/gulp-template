@@ -1,0 +1,5 @@
+# robotstxt.org
+
+# Разрешить сканирование всего контента
+User-agent: *
+Disallow:
