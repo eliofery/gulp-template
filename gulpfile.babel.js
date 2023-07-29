@@ -10,6 +10,7 @@ import { spritesBuild, spritesWatch } from './gulp/tasks/sprites'
 import { imagesBuild, imagesWatch } from './gulp/tasks/images'
 import { assetsBuild, assetsWatch } from './gulp/tasks/assets'
 import { pugBuild, pugWatch } from './gulp/tasks/pug'
+import { faviconBuild, faviconWatch } from './gulp/tasks/favicons'
 
 // Конфиги
 import config from './gulp/config'
@@ -27,6 +28,7 @@ export const build = series(
   pugBuild,
   stylesBuild,
   webpackBuild,
+  faviconBuild,
   imagesBuild,
   assetsBuild,
 )
@@ -41,6 +43,7 @@ export const watch = series(
     pugWatch,
     stylesWatch,
     webpackWatch,
+    faviconWatch,
     imagesWatch,
     assetsWatch,
   ),
