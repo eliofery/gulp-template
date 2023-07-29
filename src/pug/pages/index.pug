@@ -164,7 +164,7 @@ block content
     .container.header__container
       .header__promo
         h1.header__title Gulp сборка для продуктивной верстки
-        em ver. 0.0.15
+        em ver. 0.1.0
       img.header__logo(src="/img/build-logo.svg", width="512", height="512", alt="Логотип сборки", loading="lazy")
 
   section.content
@@ -245,7 +245,7 @@ block content
         npm run lint
         ```
       p Так же необходимо будет установить расширения для вашего текстового редактора или IDE.
-      p Например для VSCode это будут: puglint, stylelint, ESLint, editorconfig, prettier.
+      p #[b Например для VSCode это будут]: puglint, stylelint, ESLint, editorconfig, prettier.
         
       h3 Шаг 4
       p Загрузите свою svg favicon в каталог #[b ./src/assets/favicons] с именем #[b icon.svg].
@@ -257,7 +257,7 @@ block content
       p При сборке проекта на основе #[b icon.svg] будут созданы другие необходимые favicons.
       
       h3 Шаг 5
-      p Внести изменения в файл #[b ./gulp/config.js], в разделе #[b replacement], согласно наименованию вашего проекта. Изменять следует только свойство new, например:
+      p Внести изменения в файл #[b ./gulp/config.js], в разделе #[b replacement], согласно наименованию вашего проекта. Изменять следует только свойство #[b new], например:
       :markdown-it
         ```js
         ...
@@ -274,21 +274,22 @@ block content
         },
         ...
         ```
-      p #[b Gulp] будет искать значение прописанные в параметре #[b old] и менять их на значение параметра #[b new], в файлах:
+      p #[b Gulp] будет искать значения прописанные в параметрах #[b old] и менять их на значения параметров #[b new], в файлах:
       :markdown-it
         ```js
         // Файлы в которых производится замена текста
         files: [
-        `${srcPath}}/assets/manifest.json`,
-        `${srcPath}}/pug/data/config.pug`,
+          `${srcPath}}/assets/manifest.json`,
+          `${srcPath}}/pug/data/config.pug`,
+          `${srcPath}/pug/pages/index.pug`,
         ],
         ``` 
-      p После чего выполните команду которая заменит текст:
+      p После чего выполните команду, которая заменит текст:
       :markdown-it
         ```bash
         npm run replaces
         ```        
-      p Или чтобы заменить текст и автоматически удалить промо страницу с инструкцией, выполните команду. 
+      p Или, чтобы заменить текст и автоматически удалить промо страницу с инструкцией, выполните команду. 
       :markdown-it
         ```bash
         npm run prepare
@@ -314,7 +315,7 @@ block content
         ```      
 
       h4.
-        Запуск Live Server без компиляции проекта.
+        Запустит Live Server без компиляции проекта.
         Если не хочется заново компилировать проект, а только запустить сервер.
       :markdown-it
         ```bash       
@@ -323,7 +324,9 @@ block content
         
       hr
         
-      p Если при сборке возникнет ошибка: #[b DSO support routines:DLFCN_LOAD:could not load the shared library:dso_dlfcn.c:185:filename(libproviders.so):], обнулите значение переменной OPENSSL_CONF:
+      p Если при сборке возникнет ошибка: #[b DSO support routines:DLFCN_LOAD:could not load the shared library:dso_dlfcn.c:185:filename(libproviders.so)].
+    
+      p Обнулите значение переменной #[b OPENSSL_CONF]:
       :markdown-it
         ```bash
         export OPENSSL_CONF=/dev/null
@@ -389,7 +392,7 @@ block content
       pre
         code
           :special-chars
-            :markdown-it Inline **текст**
+            :markdown-it(inline) **текст**
               
             :markdown-it
               Многострочный **текст**
