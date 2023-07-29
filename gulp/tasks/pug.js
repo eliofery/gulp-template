@@ -47,7 +47,10 @@ const getData = () => {
 export const pugBuild = () => {
   const jsonData = getData() // получаем данные
 
-  return src(`${config.src.pug.pages}/**/*.pug`) // входящие файлы
+  return src([
+    `${config.src.pug.pages}/**/*.pug`,
+    `!${config.src.pug.pages}/index-example.pug`,
+  ]) // входящие файлы
     .pipe(
       // Отлавливаем и показываем ошибки в таске
       plumber({

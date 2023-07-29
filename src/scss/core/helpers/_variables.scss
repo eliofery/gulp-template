@@ -1,15 +1,20 @@
 // @link https://rolle.design/native-css-variables-vs-scss-variables
 $black: #222;
 $white: #fff;
+$accent: #cbcbcb;
 
 :root {
   --theme-text: #{hextorgb($black)};
   --theme-bg: #{hextorgb($white)};
+
+  --theme-color-accent: #{hextorgb($accent)};
 }
 
 @mixin dark-mode {
   --theme-text: #{hextorgb($white)};
   --theme-bg: #{hextorgb($black)};
+
+  --theme-color-accent: #{hextorgb($accent)};
 }
 
 .dark-mode {

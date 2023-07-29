@@ -14,7 +14,7 @@ import config from '../config'
 // Переносит в корень build
 const rootBuild = () =>
   src([
-    `${config.src.assets.favicons}/favicon.ico`,
+    `${config.src.assets.root}/robots.txt`,
     `${config.src.assets.root}/manifest.json`,
   ]).pipe(dest(`${config.build.root}`))
 
@@ -28,11 +28,9 @@ const fontsBuild = () =>
 
 // Переносит в build/img
 const imageBuild = () =>
-  src([
-    `${config.src.assets.favicons}/**/*`,
-
-    `${config.src.libs}/slick-carousel/ajax-loader.gif`,
-  ]).pipe(dest(`${config.build.images}`))
+  src([`${config.src.libs}/slick-carousel/ajax-loader.gif`]).pipe(
+    dest(`${config.build.images}`),
+  )
 
 // Переносит содержимое из библиотек node_modules в src/assets/libs
 const componentsBuild = () => {
@@ -60,8 +58,7 @@ export const assetsBuild = series(
 )
 
 // Слежение за изменением файлов
-export const assetsWatch = () =>
-  watch(
-    [`${config.src.assets.fonts}/**/*`, `${config.src.assets.images}/**/*`],
-    assetsBuild,
-  )
+export const assetsWatch = () => {
+  watch(`${config.src.assets.fonts}/**/*`, fontsBuild)
+  watch(`${config.src.assets.root}/*`, rootBuild)
+}

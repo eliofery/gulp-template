@@ -19,7 +19,10 @@ import config from '../config'
 
 // Оптимизация изображений
 export const imageOptim = () =>
-  src([`${config.src.assets.images}/**/*`]) // входящие файлы
+  src([
+    `${config.src.assets.images}/**/*`,
+    `${config.src.assets.favicons}/**/*`,
+  ]) // входящие файлы
     .pipe(newer(config.build.images)) // только те изображения которые изменились или были добавлены
     .pipe(
       gulpif(

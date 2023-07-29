@@ -8,6 +8,21 @@ const srcPath = 'src' // ресурсы для разработки проект
 const buildPath = 'build' // готовый продакшен проект
 
 const config = {
+  // Файлы в которых производится замена текста
+  files: [`${srcPath}/assets/manifest.json`, `${srcPath}/pug/data/config.pug`],
+
+  // Замена текста в файлах указанных выше, укажите в параметре new свое значение
+  replacement: {
+    env: { old: 'dev', new: 'dev' }, // dev или prod, при значении prod на странице отобразятся скрипты Google Analitics и Yandex Metrika
+    url: { old: 'http://localhost:3000', new: 'http://localhost:3000' }, // ссылка на сайт, используется для seo
+    title: { old: 'Название проекта', new: 'Название проекта' },
+    desc: { old: 'Описание проекта', new: 'Описание проекта' },
+    version: { old: '0.0.15', new: '0.0.15' }, // версия проекта
+    color: { old: '#000', new: '#000' }, // акцентный цвет проекта
+    google: { old: 'GTM-XXXXXX', new: 'GTM-XXXXXX' }, // google analytics
+    yandex: { old: 'XXXXXX', new: 'XXXXXX' }, // yandex metrika
+  },
+
   proxy: 'http://localhost', // url виртуального хоста
   port: 3000, // порт виртуального хоста
 

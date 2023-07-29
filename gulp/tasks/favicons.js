@@ -7,6 +7,8 @@
  * Ошибка: DSO support routines:DLFCN_LOAD:could not load the shared library:dso_dlfcn.c:185:filename(libproviders.so):
  * Ввести в терминале: export OPENSSL_CONF=/dev/null
  *
+ * Команда для оптимизации svg: npx svgo --multipass ./src/assets/favicons/icon.svg
+ *
  * @link https://habr.com/ru/articles/672844/
  */
 

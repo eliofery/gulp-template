@@ -1,0 +1,20 @@
+.browser-upgrade {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+
+  color: rgb(var(--theme-text));
+  text-align: center;
+
+  background-color: rgba(var(--theme-color-accent), 1);
+}
+
+.browser-upgrade a {
+  color: rgb(var(--theme-text));
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}

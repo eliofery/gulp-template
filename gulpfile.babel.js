@@ -11,6 +11,7 @@ import { imagesBuild, imagesWatch } from './gulp/tasks/images'
 import { assetsBuild, assetsWatch } from './gulp/tasks/assets'
 import { pugBuild, pugWatch } from './gulp/tasks/pug'
 import { faviconBuild, faviconWatch } from './gulp/tasks/favicons'
+import { replaceText, prepareBuild } from './gulp/tasks/prepare'
 
 // Конфиги
 import config from './gulp/config'
@@ -48,5 +49,9 @@ export const watch = series(
     assetsWatch,
   ),
 )
+
+// Подготовка сборки к работе над проектом
+export const replaces = replaceText
+export const prepare = prepareBuild
 
 export default watch

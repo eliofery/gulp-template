@@ -1,6 +1,6 @@
 {
   "name": "gulp-template",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Gulp сборка для продуктивной верстки",
   "keywords": [
     "gulp",
@@ -10,7 +10,9 @@
     "svg-sprite"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "lint": "husky install",
+    "replaces": "gulp replaces",
+    "prepare": "gulp prepare",
     "build": "gulp build --prod",
     "dev": "gulp watch",
     "proxy": "gulp proxy"
@@ -59,6 +61,7 @@
     "gulp-postcss": "^9.0.1",
     "gulp-pug": "^5.0.0",
     "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
     "gulp-sass": "^5.1.0",
     "gulp-sass-glob": "^1.1.0",
     "gulp-strip-comments": "^2.5.2",
@@ -93,7 +96,7 @@
   },
   "lint-staged": {
     "*": "editorconfig-checker --exclude '.git|.husky|node_modules|.eslintcache'",
-    "src/pug/**/*.pug": "pug-lint --fix",
+    "src/pug/**/*.pug": "pug-lint",
     "src/scss/**/*.scss": "stylelint --fix",
     "*.js": [
       "eslint --cache --fix",
