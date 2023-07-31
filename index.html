@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gulp сборка — для продуктивной верстки</title>
+    <meta name="description" content="для продуктивной верстки">
+    <script>
+      document.documentElement.classList.remove('no-js')
+      
+    </script>
+    <style>:root{--theme-color-black:34,34,34;--theme-color-white:255,255,255;--theme-color-accent:203,203,203}.dark-mode{--theme-color-black:255,255,255;--theme-color-white:34,34,34;--theme-color-accent:203,203,203}@media (prefers-color-scheme:dark){:root{--theme-color-black:255,255,255;--theme-color-white:34,34,34;--theme-color-accent:203,203,203}}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}*,::after,::before{box-sizing:inherit}body,html{height:100vh}html{box-sizing:border-box}body{position:relative;min-width:320px;margin:0;color:rgb(var(--theme-color-black));font-size:16px;font-family:Roboto,-apple-system,Arial,sans-serif;line-height:1.5;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:rgb(var(--theme-color-white))}img{max-width:100%;height:auto}button{font-family:inherit;vertical-align:middle;cursor:pointer}h1{margin:72px 0 36px;font-weight:500;font-size:48px}h2{margin:49.5px 0 24.75px;font-weight:500;font-size:33px}h3{margin:36px 0 18px;font-weight:500;font-size:24px}h4{margin:27px 0 13.5px;font-weight:500;font-size:18px}h5{margin:24px 0 12px;font-weight:500;font-size:16px}h6{margin:21px 0 10.5px;font-weight:500;font-size:14px}b,strong{font-weight:500}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;border:0;clip:rect(0,0,0,0);clip-path:inset(100%)}.container{width:100%;max-width:1536px;margin:0 auto;padding:0 20px}@media screen and (min-width:768px){.container{padding:0 40px}}@media screen and (min-width:1536px){.container{padding:0 60px}}</style>
+    <link rel="preload" as="style" href="/css/main.css?v=0.1.5" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="/css/main.css?v=0.1.5">
+    </noscript>
+    <link rel="preload" as="font" href="/fonts/roboto/roboto-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="canonical" href="http://localhost:3000">
+    <meta name="application-name" content="Gulp сборка — для продуктивной верстки">
+    <meta name="apple-mobile-web-app-title" content="Gulp сборка — для продуктивной верстки">
+    <meta property="og:title" content="Gulp сборка — для продуктивной верстки">
+    <meta property="og:locale" content="ru">
+    <meta property="og:description" content="для продуктивной верстки">
+    <meta property="og:url" content="http://localhost:3000">
+    <meta property="og:site_name" content="для продуктивной верстки">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:3000/img/cover.jpg">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Gulp сборка — для продуктивной верстки">
+    <meta property="twitter:image" content="http://localhost:3000/img/cover.jpg">
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"WebSite",
+        "headline":"Gulp сборка — для продуктивной верстки",
+        "description":"для продуктивной верстки",
+        "name":"для продуктивной верстки",
+        "url":"http://localhost:3000"
+      }
+      
+    </script>
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+    <link rel="icon" href="/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <div hidden>
+      </div><!--[if IE]>
+    <p class="browser-upgrade">Вы используете <strong>устаревший</strong> браузер, сайт может отображаться некорректно.<br>
+      Пожалуйста <a rel="nofollow" href="https://browsehappy.com/" target="_blank">обновите</a>!
+    </p><![endif]-->
+    <noscript>
+      <p class="browser-upgrade"><b>Javascript</b> отключен, некоторые функции сайта недоступны.<br>
+        Пожалуйста <a rel="nofollow" href="https://support.google.com/adsense/answer/12654" target="_blank">включите javascript</a>!<br>
+        
+      </p>
+    </noscript>
+    <style>
+      body {
+        font-size: 22px;
+      }
+      
+      main {
+        padding-bottom: 40px;
+      
+        word-wrap: break-word;
+      }
+      
+      ul ul {
+        margin-bottom: 20px;
+      }
+      
+      em {
+        color: #636363;
+        font-size: 16px;
+        font-style: normal;
+        letter-spacing: -0.8px;
+      }
+      
+      .container {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      
+      .header {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        padding: 100px 0;
+      
+        background-color: #eeeeee;
+        overflow: hidden;
+      }
+      
+      .header__container {
+        position: relative;
+      
+        display: flex;
+        align-items: center;
+        max-width: 1530px;
+      }
+      
+      .header__promo {
+        position: relative;
+        z-index: 1;
+        width: 60%;
+      }
+      
+      .header__title {
+        margin: 0;
+        font-size: 75px;
+        font-weight: 500;
+        line-height: 1.1;
+        text-shadow: -1px 1px 2px white;
+      }
+      
+      .header__logo {
+        position: absolute;
+        right: 0;
+        z-index: 0;
+      
+        width: 55%;
+      }
+      
+      .content {
+        padding: 60px 0;
+      }
+      
+      h2 {
+        font-size: 60px;
+      }
+      
+      h3 {
+        font-size: 40px;
+      }
+      
+      code {
+        display: block;
+        max-width: 100%;
+        padding: 20px 30px;
+        overflow-x: auto;
+        font-size: 18px;
+      
+        background-color: #eeeeee;
+      }
+      
+      b, strong {
+        color: #da0414;
+        font-weight: 500;
+      }
+      
+      .button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+      
+        color: #fff;
+        font-size: 20px;
+      
+        background-color: #da0414;
+        border: none;
+      
+        transition: all 0.3s ease;
+      }
+      
+      .button:hover,
+      .button:focus {
+        background-color: #bb0815;
+      }
+      
+      @media (max-aspect-ratio: 10/8) {
+        .header {
+          height: auto;
+        }
+      
+        .header__title {
+          font-size: 55px;
+        }
+      
+        .content {
+          padding: 0 0 30px;
+        }
+      
+        h2 {
+          font-size: 45px;
+        }
+      
+        h3 {
+          font-size: 36px;
+        }
+      }
+      
+      @media (max-width: 780px) {
+        .container {
+          padding: 0 20px;
+        }
+      
+        .header__logo {
+          display: none;
+        }
+      
+        .header__promo {
+          width: 100%;
+          word-break: break-word;
+          text-align: center;
+        }
+      }
+      
+    </style>
+    <main>
+      <header class="header">
+        <div class="container header__container">
+          <div class="header__promo">
+            <h1 class="header__title">Gulp сборка для продуктивной верстки</h1><em>ver. 0.1.5</em>
+          </div><img class="header__logo" src="/img/build-logo.svg" width="512" height="512" alt="Логотип сборки" loading="lazy">
+        </div>
+      </header>
+      <section class="content">
+        <div class="container">
+          <h2>Введение</h2>
+          <p>Цель данной сборки, обеспечить комфортную работу с минимальной начальной настройкой проекта.</p>
+          <h3>Основа сборки</h3>
+          <p>Сборка содержит шаблонизатор <b>Pug</b>, препроцессор <b>SCSS</b>, сборщик модулей <b>Webpack</b>.</p>
+          <h3>Особенности сборки</h3>
+          <ul>
+            <li>Оптимизация под Page Speed
+              <ul>
+                <li>Отложенная загрузка</li>
+                <li>Критические стили</li>
+              </ul>
+            </li>
+            <li>Базовая SEO оптимизация
+              <ul>
+                <li>Open Graph / Twitter Cards</li>
+                <li>JSON-LD микроразметка</li>
+                <li>Google Analytics / Yandex Metrika</li>
+              </ul>
+            </li>
+            <li>Pug шаблонизатор
+              <ul>
+                <li>Улучшенный фильтр markdown-it</li>
+                <li>Возможность добавлять свои фильтры на примере фильтра special-chars</li>
+                <li>Работа с json данными</li>
+              </ul>
+            </li>
+            <li>SCSS препроцессор
+              <ul></ul>
+            </li>
+            <li>Webpack сборщик
+              <ul>
+                <li>Возможность использовать новый формат JS по максимуму</li>
+                <li>Оптимизация кода через Babel</li>
+              </ul>
+            </li>
+            <li>SVG спрайты
+              <ul>
+                <li>Цветные</li>
+                <li>Черно-белые</li>
+              </ul>
+            </li>
+            <li>Оптимизированные изображения
+              <ul>
+                <li>Генерация webp и avif форматов</li>
+              </ul>
+            </li>
+            <li>Настроенные линтеры
+              <ul>
+                <li>Stylelint</li>
+                <li>Pug-lint</li>
+                <li>ES-Lint</li>
+                <li>Prettier</li>
+                <li>Editorconfig</li>
+              </ul>
+            </li>
+            <li>Автоматическая генерация favicons</li>
+          </ul>
+          <h2>Инструкция по установке</h2>
+          <h3>Шаг 1</h3>
+          <p>Скачать или клонировать <b>Gulp сборку</b>.</p><pre><code class="language-bash">git clone git@github.com:eliofery/gulp-template.git
+</code></pre>
+
+          <h3>Шаг 2</h3>
+          <p>Установить зависимости.</p><pre><code class="language-bash">npm i
+</code></pre>
+
+          <h3>Шаг 3</h3>
+          <p>Загрузите свою svg favicon в каталог <b>./src/assets/favicons</b> с именем <b>icon.svg</b>.</p>
+          <p>Favicon должен быть размером не менее <b>512x512</b>, например.</p><pre><code class="language-svg">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;512&quot; height=&quot;512&quot;&gt;...&lt;/svg&gt;
+</code></pre>
+
+          <p>При сборке проекта на основе <b>icon.svg</b> будут созданы другие необходимые favicons.</p>
+          <h3>Шаг 4</h3>
+          <p>Отредактировать файл <b>package.json</b>, изменив название, описание, версию проекта, ссылки на репозиторий и т.д.</p>
+          <p>Внести изменения в файл <b>./gulp/config.js</b>, в разделе <b>replacement</b>, согласно наименованию вашего проекта. Изменять следует только свойство <b>new</b>, например:</p><pre><code class="language-js">...
+// Замена текста в файлах
+replacement: {
+  env: { old: 'dev', new: 'prod' },
+  url: { old: 'http://localhost', new: 'https://site.domen' },
+  title: { old: 'Название сайта', new: 'Новое имя сайта' },
+  desc: { old: 'Описание сайта', new: 'Новое описание сайта' },
+  version: { old: '1.0.0', new: '2.0.0' },
+  color: { old: '#000', new: '#777' },
+  google: { old: 'GTM-XXXXXX', new: 'GTX-325264' },
+  yandex: { old: 'XXXXXX', new: 'jsdhgy7562' },
+},
+...
+</code></pre>
+
+          <p><b>Gulp</b> будет искать значения прописанные в параметрах <b>old</b> и менять их на значения параметров <b>new</b>, в файлах:</p><pre><code class="language-js">// Файлы в которых производится замена текста
+files: [
+  `${srcPath}}/assets/manifest.json`,
+  `${srcPath}}/pug/data/config.pug`,
+  `${srcPath}/pug/pages/index.pug`,
+],
+</code></pre>
+
+          <p>После чего выполните команду, которая заменит текст:</p><pre><code class="language-bash">npm run replaces
+</code></pre>
+
+          <p>Или, чтобы заменить текст и автоматически удалить промо страницу с инструкцией, выполните команду. </p><pre><code class="language-bash">npm run preperate
+</code></pre>
+
+          <h3>Шаг 5</h3>
+          <p>Теперь вы готовы приступить к верстке своего проекта.</p>
+          <h4>
+            Соберет проект и запустит Live Server в режиме разработки.
+            Файлы не будут минифицированы, а картинки оптимизированы.
+          </h4><pre><code class="language-bash">npm run dev
+</code></pre>
+
+          <h4>
+            Соберет проект в режиме продакшн.
+            Файлы будут минифицированы, а картинки оптимизированы.
+          </h4><pre><code class="language-bash">npm run build
+</code></pre>
+
+          <h4>
+            Запустит Live Server без компиляции проекта.
+            Если не хочется заново компилировать проект, а только запустить сервер.
+          </h4><pre><code class="language-bash">npm run proxy
+</code></pre>
+
+          <hr>
+          <p>Если при сборке возникнет ошибка: <b>DSO support routines:DLFCN_LOAD:could not load the shared library:dso_dlfcn.c:185:filename(libproviders.so)</b>.</p>
+          <p>Обнулите значение переменной <b>OPENSSL_CONF</b>:</p><pre><code class="language-bash">export OPENSSL_CONF=/dev/null
+</code></pre>
+
+          <h2>Примеры верстки с Pug</h2>
+          <h3>Json данные в Pug</h3>
+          <p>Хранятся в каталоге <b>./src/pug/data</b>. Например файл <b>mainNav.json</b>.</p>
+          <p>Чтобы получить доступ к его значениям, нужно обратиться к глобальной переменной <b>jsonData</b>, которая отвечает за вывод данных из <b>json</b> файлов, хранящихся в каталоге <b>data</b>.</p><pre><code class="language-pug">jsonData.имя_файла
+</code></pre>
+
+          <p>Получение содержимого из файла <b>mainNav.json</b> будет выглядеть следующим образом:</p><pre><code class="language-pug">jsonData.mainNav
+</code></pre>
+
+          <h3>Вывода навигации</h3>
+          <p>Рассмотрим пример вывода навигации на основе <b>json</b> данных из файла <b>mainNav.json</b>.</p>
+          <p>Ознакомиться с содержимым файла <b>mainNav.json</b> можно по пути <b>./src/pug/data/mainNav.json</b>.</p><pre><code class="language-html">ul
+  each item, index in jsonData.mainNav.items
+    li #{ index }
+    li #{ item.title }
+
+    if item.links
+      ul
+      each link in item.links
+        li #{ link.title }
+        li #{ link.link }
+</code></pre>
+
+          <h3>Вывод code</h3>
+          <p>Рассмотрим пример вывода разметки в теге code.</p>
+          <pre><code>pre
+  code
+    :special-chars
+      &lt;div&gt;
+        Тут разметка которая экранируется
+      &lt;/div&gt;
+
+// Короткая версия конструкции выше
+:markdown-it
+  ```html 
+  &lt;div&gt;
+    Тут разметка которая экранируется
+  &lt;/div&gt;
+  ```
+</code></pre>
+          <h3>Markdown разметка</h3>
+          <p>Рассмотрим пример вывода Markdown разметки.</p>
+          <pre><code>:markdown-it(inline) **текст**
+  
+:markdown-it
+  Многострочный **текст**
+
+include:markdown-it ../markdown/docs.md
+
+:markdown-it
+  ```js
+  var codeBlocks;
+  ```
+</code></pre>
+        </div>
+      </section>
+      <div class="container">
+        <button class="button">Вернуться наверх</button>
+      </div>
+    </main>
+    <footer class="main-footer"></footer>
+    <script src="/js/main.js?v=0.1.5" type="module"></script>
+  </body>
+</html>

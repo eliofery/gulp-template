@@ -1,0 +1,1 @@
+!function(){"use strict";new class{_element=null;constructor(e){this._element=document.querySelector(e)}get element(){return this._element}}(".button").element.addEventListener("click",(()=>{window.scrollTo({top:document.querySelector(".header").clientHeight,behavior:"smooth"})}))}();
