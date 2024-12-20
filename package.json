@@ -7,7 +7,8 @@
     "watch": "ts-node --esm ./node_modules/.bin/gulp",
     "build": "ts-node --esm ./node_modules/.bin/gulp build",
     "dev": "ts-node --esm ./node_modules/.bin/gulp dev",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "editor-check": "editorconfig-checker --exclude '.git|node_modules'"
   },
   "keywords": [
     "gulp"
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/gulp": "^4.0.17",
     "@types/node": "^22.10.2",
+    "editorconfig-checker": "5",
     "gulp": "^5.0.0",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
