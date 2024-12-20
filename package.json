@@ -4,11 +4,13 @@
   "description": "Gulp сборка для продуктивной верстки.",
   "type": "module",
   "scripts": {
+    "prepare": "husky install",
     "watch": "ts-node --esm ./node_modules/.bin/gulp",
     "build": "ts-node --esm ./node_modules/.bin/gulp build",
     "dev": "ts-node --esm ./node_modules/.bin/gulp dev",
+    "editor-check": "editorconfig-checker --exclude '.git|node_modules'",
     "format": "prettier --write .",
-    "editor-check": "editorconfig-checker --exclude '.git|node_modules'"
+    "type-check": "tsc --noEmit"
   },
   "keywords": [
     "gulp"
@@ -20,10 +22,21 @@
     "@types/node": "^22.10.2",
     "editorconfig-checker": "5",
     "gulp": "^5.0.0",
+    "husky": ">=7",
+    "lint-staged": ">=10",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {},
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "lint-staged": {
+    "*": [
+      "npm run editor-check",
+      "npm run format"
+    ],
+    "*.{js,ts}": [
+      "bash -c tsc --noEmit"
+    ]
+  }
 }
