@@ -2,8 +2,11 @@
   "name": "gulp-template",
   "version": "0.2.0",
   "description": "Gulp сборка для продуктивной верстки.",
+  "type": "module",
   "scripts": {
-    "test": "gulp"
+    "watch": "ts-node --esm ./node_modules/.bin/gulp",
+    "build": "ts-node --esm ./node_modules/.bin/gulp build",
+    "dev": "ts-node --esm ./node_modules/.bin/gulp dev",
   },
   "keywords": [
     "gulp"
@@ -12,7 +15,11 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {
-    "gulp": "^5.0.0"
+    "@types/gulp": "^4.0.17",
+    "@types/node": "^22.10.2",
+    "gulp": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   },
   "dependencies": {}
 }
