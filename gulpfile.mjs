@@ -1,19 +1,21 @@
-import { config } from './gulp/config.mjs'
+import { series, parallel } from 'gulp'
 
-export const watch = done => {
-  console.log(config)
+import { webpackBuild, webpackWatch } from './gulp/tasks/webpack.mjs'
 
-  done()
-}
+import config from './gulp/config.mjs'
 
-export const build = done => {
-  console.log('This build')
+config.setEnv()
 
-  done()
-}
+export const build = series(webpackBuild)
+
+export const watch = series(
+  build,
+
+  parallel(webpackWatch),
+)
 
 export const dev = done => {
-  console.log('This dev')
+  console.log(config)
 
   done()
 }
