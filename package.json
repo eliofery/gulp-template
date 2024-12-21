@@ -2,16 +2,13 @@
   "name": "gulp-template",
   "version": "0.2.0",
   "description": "Gulp сборка для продуктивной верстки.",
-  "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "watch": "ts-node --esm ./node_modules/.bin/gulp",
-    "build": "ts-node --esm ./node_modules/.bin/gulp build",
-    "dev": "ts-node --esm ./node_modules/.bin/gulp dev",
+    "watch": "gulp",
+    "build": "gulp build",
+    "dev": "gulp dev",
     "editor-check": "editorconfig-checker --exclude '.git|node_modules|.husky'",
-    "format": "prettier --write .",
-    "type-check": "tsc --noEmit",
-    "lint": "eslint . --fix"
+    "format": "prettier --write ."
   },
   "keywords": [
     "gulp"
@@ -19,23 +16,11 @@
   "author": "Sergio Eliofery",
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
-    "@types/gulp": "^4.0.17",
-    "@types/node": "^22.10.2",
-    "@typescript-eslint/eslint-plugin": "^8.18.1",
-    "@typescript-eslint/parser": "^8.18.1",
     "editorconfig-checker": "5",
-    "eslint": "^9.17.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.14.0",
     "gulp": "^5.0.0",
     "husky": ">=7",
     "lint-staged": ">=10",
-    "prettier": "^3.4.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1"
+    "prettier": "^3.4.2"
   },
   "dependencies": {},
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
@@ -43,10 +28,6 @@
     "*": [
       "npm run editor-check",
       "npm run format"
-    ],
-    "*.{js,mjs,cjs,ts}": [
-      "bash -c tsc --noEmit",
-      "npm run lint"
     ]
   }
 }
