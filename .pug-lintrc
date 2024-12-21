@@ -1,0 +1,13 @@
+{
+  "validateExtensions": true,
+  "validateDivTags": true,
+  "validateAttributeSeparator": { "separator": ", ", "multiLineSeparator": ",\n " },
+  "validateAttributeQuoteMarks": "\"",
+  "requireSpecificAttributes": [ { "img": [ "src", "width", "height", "alt" ] } ],
+  "requireSpaceAfterCodeOperator": true,
+  "requireLowerCaseTags": true,
+  "requireClassLiteralsBeforeAttributes": true,
+  "disallowSpacesInsideAttributeBrackets": true,
+  "disallowLegacyMixinCall": true,
+  "disallowDuplicateAttributes": true
+}

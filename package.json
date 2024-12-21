@@ -10,7 +10,8 @@
     "editor-check": "editorconfig-checker --exclude '.git|node_modules|.husky|build'",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "lint:pug": "pug-lint ./src/pug/**/*.pug"
   },
   "keywords": [
     "gulp",
@@ -38,10 +39,21 @@
     "gulp-if": "^3.0.0",
     "gulp-notify": "^5.0.0",
     "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-replace": "^1.1.4",
     "gulp-strip-comments": "^2.6.0",
     "husky": ">=7",
+    "jstransformer": "^1.0.0",
+    "jstransformer-clean-css": "^2.1.0",
+    "jstransformer-highlight": "^2.0.0",
+    "jstransformer-markdown-it": "^3.0.0",
+    "jstransformer-scss": "^2.0.0",
     "lint-staged": ">=10",
+    "markdown-it-attrs": "^4.3.0",
+    "markdown-it-kbd": "^2.2.2",
     "prettier": "^3.4.2",
+    "pug-include-glob": "^0.4.3",
+    "pug-lint": "^2.7.0",
     "terser-webpack-plugin": "^5.3.11",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
@@ -57,6 +69,7 @@
       "npm run editor-check",
       "npm run format"
     ],
+    "*.pug": "npm run lint:pug",
     "*.ts": "bash -c tsc --noEmit",
     "*.{js,ts}": "npm run lint"
   }

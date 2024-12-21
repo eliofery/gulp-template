@@ -1,0 +1,23 @@
+include ../data/*.pug
+include ../components/*.pug
+
+block variables
+  - const pageTitle = "Укажите заголовок";
+
+doctype html
+html.no-js(lang="ru")
+  head
+    include ../parts/head.pug
+
+  body
+    block header
+      include ../parts/header.pug
+
+    main
+      block content
+
+    block footer
+      include ../parts/footer.pug
+
+    block scripts
+      script(src="/js/main.js?v=" + version, type="module")
