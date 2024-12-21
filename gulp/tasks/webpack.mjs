@@ -34,7 +34,7 @@ export const webpackBuild = () =>
     .pipe(webpackStream(webpackConfig)) // настройки webpack
     .pipe(gulpif(config.isProd, strip())) // удаляем комментарии в коде
     .pipe(dest(config.build.script)) // исходящий файл
-// .pipe(browserSync.stream()) // обновление страницы в браузере
+    .pipe(browserSync.stream()) // обновление страницы в браузере
 
 // Слежение за изменением файлов
 export const webpackWatch = () => watch(`${config.src.script.root}/**/*.{js,ts}`, webpackBuild)
