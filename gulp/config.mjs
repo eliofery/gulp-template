@@ -39,6 +39,7 @@ const config = {
         mono: `${srcPath}/assets/icons/mono`, // черно-белые иконки
         multi: `${srcPath}/assets/icons/multi`, // цветные иконки
       },
+      fonts: `${srcPath}/assets/fonts`, // шрифты
     },
   },
 
@@ -48,6 +49,7 @@ const config = {
 
     script: `${buildPath}/js`, // скрипты
     images: `${buildPath}/img`, // изображения
+    fonts: `${buildPath}/fonts`, // шрифты
   },
 
   // Определение окружения сборки проекта

@@ -65,6 +65,7 @@
     "lint-staged": ">=10",
     "markdown-it-attrs": "^4.3.0",
     "markdown-it-kbd": "^2.2.2",
+    "merge-stream": "^2.0.0",
     "prettier": "^3.4.2",
     "pug-include-glob": "^0.4.3",
     "pug-lint": "^2.7.0",
