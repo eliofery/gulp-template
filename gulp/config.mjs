@@ -28,13 +28,24 @@ const config = {
       root: `${srcPath}/scripts`, // корневой каталог
       components: `${srcPath}/scripts/components`, // компоненты
     },
+
+    // Различные ресурсы
+    assets: {
+      root: `${srcPath}/assets`, // корневой каталог
+      icons: {
+        root: `${srcPath}/assets/icons`, // корневой каталог svg иконок
+        mono: `${srcPath}/assets/icons/mono`, // черно-белые иконки
+        multi: `${srcPath}/assets/icons/multi`, // цветные иконки
+      },
+    },
   },
 
   // Пути к каталогам для продакшен проекта
   build: {
-    root: buildPath,
+    root: buildPath, // корневой каталог
 
-    script: `${buildPath}/js`,
+    script: `${buildPath}/js`, // скрипты
+    images: `${buildPath}/img`, // изображения
   },
 
   // Определение окружения сборки проекта
