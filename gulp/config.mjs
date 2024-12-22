@@ -1,10 +1,10 @@
 import packageJson from '../package.json' assert { type: 'json' }
 
-const srcPath = 'src'
-const buildPath = 'build'
+const srcPath = 'src' // исходники
+const buildPath = 'build' // сборка
 
 const config = {
-  version: packageJson.version,
+  version: packageJson.version, // версия проекта
 
   // Настройки для виртуального сервера
   server: {
@@ -17,16 +17,16 @@ const config = {
     root: srcPath,
 
     // Шаблонизатор pug
-    pug: {
-      root: `${srcPath}/pug`, // корневой каталог pug
-      data: `${srcPath}/pug/data`, // конфиги и json данные
-      pages: `${srcPath}/pug/pages`, // pug страницы для компиляции в html
+    markup: {
+      root: `${srcPath}/markup`, // корневой каталог
+      data: `${srcPath}/markup/data`, // конфиги и json данные
+      pages: `${srcPath}/markup/pages`, // страницы
     },
 
     // Скрипты javascript, typescript
     script: {
-      root: `${srcPath}/scripts`,
-      components: `${srcPath}/scripts/components`,
+      root: `${srcPath}/scripts`, // корневой каталог
+      components: `${srcPath}/scripts/components`, // компоненты
     },
   },
 
@@ -39,8 +39,8 @@ const config = {
 
   // Определение окружения сборки проекта
   setEnv() {
-    this.isProd = process.argv.includes('--production')
-    this.isDev = !this.isProd
+    this.isProd = process.argv.includes('--production') // режим производства
+    this.isDev = !this.isProd // режим разработки
   },
 }
 

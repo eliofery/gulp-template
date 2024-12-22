@@ -19,10 +19,12 @@ global.browserSync = browser.create()
 // Запуск таска
 const server = done => {
   browserSync.init({
+    // Вариант 1
     //proxy: `${config.server.proxy}:${config.server.port}`, // хост по заданной ссылке
-    //port: config.server.port, // использовать заданный порт
 
+    // Вариант 2
     server: config.build.root, // хост по заданному каталогу
+    port: config.server.port, // использовать заданный порт
 
     open: true, // автоматически открыть страницу в браузере после запуска таска
     notify: false, // показать уведомление

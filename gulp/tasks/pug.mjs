@@ -3,7 +3,7 @@
  *
  * Компилирует pug разметку в html.
  *
- * @link https://github.com/pugjs/pug/issues/2561
+ * @link https://pugjs.org/language/filters.html
  */
 
 // Библиотеки
@@ -20,7 +20,7 @@ import replace from 'gulp-replace' // замена текста внутри ф�
 import jstransformer from 'jstransformer' // для преобразования содержимого
 import markdownIt from 'jstransformer-markdown-it' // позволяет компилировать и преобразовывать Markdown-код
 import kbd from 'markdown-it-kbd' // позволяет добавлять тег kbd через markdown разметку [[]]
-import 'jstransformer-highlight' // подсветка синтаксиса
+import 'jstransformer-highlight' // подсветка синтаксиса :highlight(lang="javascript")
 import markdownItAttrs from 'markdown-it-attrs' // позволяет добавлять markdown разметке атрибуты
 import scss from 'jstransformer-scss' // компилирует scss в css
 import cleanCss from 'jstransformer-clean-css' // минифицирует css
@@ -36,7 +36,7 @@ import config from '../config.mjs'
 // Далее значение этого объекта в pug файле можно будет получить примерно так:
 // #{jsonData.nav.home.link}
 const getData = () => {
-  const dir = config.src.pug.data // здесь ищем json файлы
+  const dir = config.src.markup.data // здесь ищем json файлы
   const files = fs.readdirSync(dir) // получаем список всех файлов в каталоге
   const data = {} // хранит данные файлов
 
@@ -57,7 +57,7 @@ const getData = () => {
 export const pugToHtml = () => {
   const jsonData = getData() // получаем данные
 
-  return src([`${config.src.pug.pages}/**/*.pug`]) // входящие файлы
+  return src([`${config.src.markup.pages}/**/*.pug`]) // входящие файлы
     .pipe(
       // Отлавливаем и показываем ошибки в таске
       plumber({
@@ -71,7 +71,7 @@ export const pugToHtml = () => {
     .pipe(
       pug({
         doctype: 'html', // чтобы не было обратного слеша у одиночных тэгов
-        pretty: true, // сжатие html разметки
+        pretty: config.isDev, // сжатие html разметки
         plugins: [pugIncludeGlob()], // подключаем сторонние pug плагины
         locals: {
           // передаем jsonData в pug, далее используем его примерно так: #{jsonData.nav.home.link}
@@ -118,7 +118,7 @@ export const pugToHtml = () => {
 const envSet = () => {
   const pattern = /(- (var|let|const) env = ")(prod|dev)(";?)/g
 
-  return src(`${config.src.pug.data}/config.pug`)
+  return src(`${config.src.markup.data}/config.pug`)
     .pipe(gulpif(config.isDev, replace(pattern, '$1dev$4')))
     .pipe(gulpif(config.isProd, replace(pattern, '$1prod$4')))
     .pipe(dest(file => file.base))
@@ -128,7 +128,7 @@ const envSet = () => {
 const versionSet = () => {
   const pattern = /(- (var|let|const) version = ")(.*)(";?)/g
 
-  return src(`${config.src.pug.data}/config.pug`)
+  return src(`${config.src.markup.data}/config.pug`)
     .pipe(replace(pattern, `$1${config.version}$4`))
     .pipe(dest(file => file.base))
 }
@@ -140,8 +140,8 @@ export const pugBuild = series(envSet, versionSet, pugToHtml)
 export const pugWatch = () => {
   watch(
     [
-      `${config.src.pug.root}/**/*.pug`,
-      `${config.src.pug.root}/data/**/*`,
+      `${config.src.markup.root}/**/*.pug`,
+      `${config.src.markup.root}/data/**/*`,
       // `${config.src.assets.icons.root}/sprite-*.svg`,
     ],
     pugToHtml,

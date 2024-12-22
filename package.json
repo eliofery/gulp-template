@@ -11,11 +11,12 @@
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --fix",
-    "lint:pug": "pug-lint ./src/pug/**/*.pug"
+    "lint:pug": "pug-lint ./src/markup/**/*.pug"
   },
   "keywords": [
     "gulp",
-    "webpack"
+    "webpack",
+    "pug"
   ],
   "author": "Sergio Eliofery",
   "license": "MIT",
