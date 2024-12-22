@@ -16,6 +16,7 @@ import autoPrefixer from 'autoprefixer' // автоматически добав
 import cssnano from 'cssnano' // минифицирует css файл
 import postcssCustomMedia from 'postcss-custom-media' // группирует стили под общими медиа запросами
 import comments from 'postcss-discard-comments' // группирует стили под общими медиа запросами
+import cssImport from 'postcss-import' // импорт css файлов
 import { pugBuild } from './pug.mjs' // чтобы pug обновлял критические стили
 
 // Конфиги
@@ -55,6 +56,7 @@ export const stylesBuild = () => {
     )
     .pipe(
       postcss([
+        cssImport(),
         postcssCustomMedia(), // объединяет медиа запросы
         autoPrefixer(), // автопрефиксер
         minify, // минификация
