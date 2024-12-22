@@ -23,6 +23,9 @@ const config = {
       pages: `${srcPath}/markup/pages`, // страницы
     },
 
+    // Препроцессор sass
+    style: `${srcPath}/styles`, // scss стили
+
     // Скрипты javascript, typescript
     script: {
       root: `${srcPath}/scripts`, // корневой каталог
@@ -46,11 +49,17 @@ const config = {
   // Пути к каталогам для продакшен проекта
   build: {
     root: buildPath, // корневой каталог
-
+    style: `${buildPath}/css`, // стили
     script: `${buildPath}/js`, // скрипты
     images: `${buildPath}/img`, // изображения
     fonts: `${buildPath}/fonts`, // шрифты
   },
+
+  // Эти стили не будут добавлены в main.scss.
+  // Нужно чтобы не дублировать стили, используемые в критических стилях.
+  ignoreScssPaths: [
+    // 'scaffolds/components/_navigation.scss',
+  ],
 
   // Определение окружения сборки проекта
   setEnv() {

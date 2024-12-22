@@ -7,6 +7,7 @@ import { imagesBuild, imagesWatch } from './gulp/tasks/images.mjs'
 import { faviconBuild, faviconWatch } from './gulp/tasks/favicons.mjs'
 import { spritesBuild, spritesWatch } from './gulp/tasks/sprites.mjs'
 import { pugBuild, pugWatch } from './gulp/tasks/pug.mjs'
+import { stylesBuild, stylesWatch } from './gulp/tasks/styles.mjs'
 import { webpackBuild, webpackWatch } from './gulp/tasks/webpack.mjs'
 
 import config from './gulp/config.mjs'
@@ -15,13 +16,22 @@ config.setEnv()
 
 export const proxy = server
 
-export const build = series(clear, spritesBuild, pugBuild, webpackBuild, faviconBuild, imagesBuild, assetsBuild)
+export const build = series(
+  clear,
+  spritesBuild,
+  pugBuild,
+  stylesBuild,
+  webpackBuild,
+  faviconBuild,
+  imagesBuild,
+  assetsBuild,
+)
 
 export const watch = series(
   build,
   server,
 
-  parallel(spritesWatch, pugWatch, webpackWatch, faviconWatch, imagesWatch, assetsWatch),
+  parallel(spritesWatch, pugWatch, stylesWatch, webpackWatch, faviconWatch, imagesWatch, assetsWatch),
 )
 
 export default watch
