@@ -32,6 +32,8 @@ const config = {
     // Различные ресурсы
     assets: {
       root: `${srcPath}/assets`, // корневой каталог
+      images: `${srcPath}/assets/images`, // изображения
+      favicons: `${srcPath}/assets/favicons`, // фавиконки
       icons: {
         root: `${srcPath}/assets/icons`, // корневой каталог svg иконок
         mono: `${srcPath}/assets/icons/mono`, // черно-белые иконки
