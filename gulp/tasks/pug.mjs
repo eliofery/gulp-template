@@ -54,10 +54,8 @@ const getData = () => {
 }
 
 // Pug в Html
-export const pugToHtml = () => {
-  const jsonData = getData() // получаем данные
-
-  return src([`${config.src.markup.pages}/**/*.pug`]) // входящие файлы
+export const pugToHtml = () =>
+  src([`${config.src.markup.pages}/**/*.pug`]) // входящие файлы
     .pipe(
       // Отлавливаем и показываем ошибки в таске
       plumber({
@@ -74,8 +72,9 @@ export const pugToHtml = () => {
         pretty: config.isDev, // сжатие html разметки
         plugins: [pugIncludeGlob()], // подключаем сторонние pug плагины
         locals: {
-          // передаем jsonData в pug, далее используем его примерно так: #{jsonData.nav.home.link}
-          jsonData,
+          // Пользовательские данные передаваемые в pug.
+          // Пример использования в шаблоне pug: #{jsonData.nav.home.link}
+          jsonData: getData(),
         },
         filters: {
           // Переопределяем pug фильтр markdown-it, улучшая его стандартную функциональность
@@ -112,13 +111,12 @@ export const pugToHtml = () => {
     )
     .pipe(dest(config.build.root)) // исходящие файлы
     .pipe(browserSync.stream()) // обновление страницы в браузере
-}
 
 // Определение окружения
 const envSet = () => {
   const pattern = /(- (var|let|const) env = ")(prod|dev)(";?)/g
 
-  return src(`${config.src.markup.data}/config.pug`)
+  return src(`${config.src.markup}/config.pug`)
     .pipe(gulpif(config.isDev, replace(pattern, '$1dev$4')))
     .pipe(gulpif(config.isProd, replace(pattern, '$1prod$4')))
     .pipe(dest(file => file.base))
@@ -128,7 +126,7 @@ const envSet = () => {
 const versionSet = () => {
   const pattern = /(- (var|let|const) version = ")(.*)(";?)/g
 
-  return src(`${config.src.markup.data}/config.pug`)
+  return src(`${config.src.markup}/config.pug`)
     .pipe(replace(pattern, `$1${config.version}$4`))
     .pipe(dest(file => file.base))
 }

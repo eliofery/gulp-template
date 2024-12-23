@@ -1,8 +1,11 @@
+include ../config.pug
 include ../data/*.pug
-include ../components/*.pug
+include ../mixins/*.pug
 
 block variables
   - const pageTitle = "Укажите заголовок";
+  - const pageDescription = "Укажите описание";
+  - const pageType = projectType;
 
 doctype html
 html.no-js(lang="ru")
@@ -16,13 +19,13 @@ html.no-js(lang="ru")
       include ../../assets/icons/sprite-multi.svg
 
     block header
-      include ../parts/header.pug
+      include ../parts/default/header.pug
 
     main
       block content
 
     block footer
-      include ../parts/footer.pug
+      include ../parts/default/footer.pug
 
     block scripts
       script(src="/js/main.js?v=" + version, type="module")
