@@ -1,0 +1,109 @@
+@use 'sass:map';
+@use 'functions' as *;
+@use 'variables' as *;
+
+@mixin laptop {
+  @media screen and (max-width: rem($laptop)) {
+    @content;
+  }
+}
+
+@mixin laptop-above {
+  @media screen and (min-width: rem($laptop)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin tablet-above {
+  @media screen and (min-width: rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: rem($mobile)) {
+    @content;
+  }
+}
+
+@mixin mobile-above {
+  @media screen and (min-width: rem($mobile)) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media screen and (max-width: rem($mobile-s)) {
+    @content;
+  }
+}
+
+@mixin mobile-s-above {
+  @media screen and (min-width: rem($mobile-s)) {
+    @content;
+  }
+}
+
+@mixin from($size) {
+  $min_width: map.get($screen-sizes, $size);
+
+  @if $min_width == null {
+    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
+  }
+
+  @media screen and (min-width: rem($min_width)) {
+    @content;
+  }
+}
+
+@mixin to($size) {
+  $max_width: map.get($screen-sizes, $size);
+
+  @if $max_width == null {
+    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
+  }
+
+  @media screen and (max-width: rem($max_width)) {
+    @content;
+  }
+}
+
+@mixin only-mobile($size: 'sm') {
+  $max_width: map.get($screen-sizes, $size);
+
+  @if $max_width == null {
+    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
+  }
+
+  @media screen and (max-width: rem($max_width - 1)) {
+    @content;
+  }
+}
+
+@mixin retina($dpi: 144, $dppx: 1.5) {
+  @media (min-resolution: #{$dpi}dpi), (min-resolution: #{$dppx}dppx) {
+    @content;
+  }
+}
+
+@mixin hover($hasActiveEffectOnMobile: true) {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @if ($hasActiveEffectOnMobile) {
+    @media (any-hover: none) {
+      &:active {
+        @content;
+      }
+    }
+  }
+}

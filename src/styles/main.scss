@@ -1,12 +1,3 @@
-//@import "core/helpers/functions";
-//@import "core/helpers/variables";
-//@import "core/helpers/mixins";
+@use 'base/fonts';
 
-//@import "core/base/fonts";
-
-//@import "scaffolds/components/**/*";
-//@import "scaffolds/sections/**/*";
-
-body {
-  background: mediumpurple;
-}
+@import 'highlight.js/styles/a11y-light.css';

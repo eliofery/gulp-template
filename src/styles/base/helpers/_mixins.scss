@@ -1,0 +1,80 @@
+/* https://github.com/aleksanderlamkov/future-tech/blob/main/styles/helpers/_mixins.scss */
+
+@use 'sass:math';
+@use 'functions' as *;
+
+@mixin font-face($font-family, $url, $weight: normal, $style: normal) {
+  @font-face {
+    font-weight: $weight;
+    font-family: '#{$font-family}';
+    font-style: $style;
+    font-display: swap;
+    src: url('#{$url}.woff2') format('woff2');
+  }
+}
+
+@mixin hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin show {
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin fluid-text($max: 48, $min: 16) {
+  font-size: fluid($max, $min);
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin abs-x {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+@mixin abs-y {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin sr-only {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+
+  white-space: nowrap !important;
+
+  border: 0 !important;
+
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(100%) !important;
+}

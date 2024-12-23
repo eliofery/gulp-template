@@ -1,4 +1,0 @@
-// Переводит Hex в RGB
-@function hextorgb($hex) {
-  @return red($hex), green($hex), blue($hex);
-}

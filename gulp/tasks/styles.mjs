@@ -69,5 +69,5 @@ export const stylesBuild = () => {
 
 // Слежение за изменением файлов
 export const stylesWatch = () => {
-  watch(`${config.src.scss}/**/*.{scss,sass}`, series(stylesBuild, pugBuild))
+  watch(`${config.src.style}/**/*.{scss,sass}`, series(stylesBuild, pugBuild))
 }
