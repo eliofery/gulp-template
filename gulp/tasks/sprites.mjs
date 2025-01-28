@@ -22,6 +22,8 @@ import replace from 'gulp-replace' // замена текста внутри ф�
 
 // Конфиги
 import config from '../config.mjs'
+import fs from 'fs'
+import path from 'path'
 
 // Создание черно-белого svg спрайта
 const spriteMono = () =>
@@ -52,7 +54,6 @@ const spriteMono = () =>
     )
     .pipe(concat('sprite-mono.svg')) // объединение файлов
     .pipe(dest(config.src.assets.icons.root)) // исходящий файл
-    .pipe(browserSync.stream()) // обновление страницы в браузере
 
 // Создание цветного svg спрайта
 const spriteMulti = () =>
@@ -85,26 +86,29 @@ const spriteMulti = () =>
     .pipe(dest(config.src.assets.icons.root)) // исходящий файл
     .pipe(browserSync.stream()) // обновление страницы в браузере
 
-// Заменяем содержимое файла sprite-mono.svg (черно белые иконки) на пустую строку.
 // Так как спрайты будут подключаться в pug разметку, то важно чтобы на момент компиляции
 // файл со спрайтом существовал физически иначе pug выкинет ошибку и не соберется в html.
-// Поэтому если у нас нет ни каких svg иконок для создания спрайта мы просто очищаем его содержимое.
-const spriteMonoRemove = () =>
-  src(`${config.src.assets.icons.root}/sprite-mono.svg`)
-    .pipe(replace(/[\s\S]*/g, ''))
-    .pipe(dest(config.src.assets.icons.root))
+// Поэтому если у нас нет ни каких svg иконок для создания спрайта мы просто создаем пустой файл.
+const clearSprite = file => {
+  const filePath = `${config.src.assets.icons.root}/${file}.svg` // sprite-mono.svg | sprite-multi.svg
 
-// Заменяем содержимое файла sprite-multi.svg (цветные белые иконки) на пустую строку
-const spriteMultiRemove = () =>
-  src(`${config.src.assets.icons.root}/sprite-multi.svg`)
-    .pipe(replace(/[\s\S]*/g, ''))
-    .pipe(dest(config.src.assets.icons.root))
+  // Проверяем, существует ли файл
+  if (!fs.existsSync(filePath)) {
+    fs.mkdirSync(path.dirname(filePath), { recursive: true }) // создаем пустую директорию, если её нет
+    fs.writeFileSync(filePath, '') // создаем файл пустой файл
+  }
+}
+
+// Очистка спрайтов
+const removeSprites = done => {
+  clearSprite('sprite-mono')
+  clearSprite('sprite-multi')
+
+  done()
+}
 
 // Создание спрайтов
 const createSprites = parallel(spriteMono, spriteMulti)
-
-// Очистка спрайтов
-const removeSprites = parallel(spriteMonoRemove, spriteMultiRemove)
 
 // Копирование спрайтов в build
 const copySprites = () => src([`${config.src.assets.icons.root}/sprite-*.svg`]).pipe(dest(config.build.images))
@@ -114,15 +118,6 @@ export const spritesBuild = series(removeSprites, createSprites, copySprites)
 
 // Слежение за изменением файлов
 export const spritesWatch = () => {
-  watch(
-    `${config.src.assets.icons.mono}/**/*.svg`,
-    { ignoreInitial: false },
-    series(spriteMonoRemove, spriteMono, copySprites),
-  )
-
-  watch(
-    `${config.src.assets.icons.multi}/**/*.svg`,
-    { ignoreInitial: false },
-    series(spriteMultiRemove, spriteMulti, copySprites),
-  )
+  watch(`${config.src.assets.icons.mono}/**/*.svg`, { ignoreInitial: false }, series(spriteMono, copySprites))
+  watch(`${config.src.assets.icons.multi}/**/*.svg`, { ignoreInitial: false }, series(spriteMulti, copySprites))
 }

@@ -25,12 +25,12 @@ div(hidden)
   display: inline-block;
   width: 200px;
   height: 200px;
+  background: #ffd11a center no-repeat;
   background-size: 200px;
-  background-repeat: no-repeat;
 }
 
 .icon-card {
-  background-image: url('/img/sprite-mono.svg#icon-card-view');
+  background-image: url('../img/sprite-mono.svg#icon-card-view');
 }
 ```
 

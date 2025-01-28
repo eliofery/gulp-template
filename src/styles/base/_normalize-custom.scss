@@ -1,0 +1,153 @@
+/* Custom | https://github.com/aleksanderlamkov/future-tech/blob/main/styles/_normalize.scss
+  ========================================================================== */
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+
+  line-height: 1.5;
+}
+
+h1:not([class]) {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+h2:not([class]) {
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
+}
+
+h3:not([class]) {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+h4:not([class]) {
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+h5:not([class]) {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h6:not([class]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure):where(:not([class])):first-child {
+  margin-top: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure):where(:not([class])):last-child {
+  margin-bottom: 0;
+}
+
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+
+  border: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+a:where([class]) {
+  display: inline-flex;
+
+  text-decoration: none;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+/*
+[fill] {
+  fill: currentColor;
+}
+[stroke] {
+  stroke: currentColor;
+}
+*/
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

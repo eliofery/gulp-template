@@ -1,0 +1,17 @@
+[
+  {
+    "image": "/img/reports/report1.jpg",
+    "title": "FutureTech Trends 2024",
+    "description": "An ebook that predicts upcoming technology trends for the next year, including AI developments"
+  },
+  {
+    "image": "/img/reports/report2.jpg",
+    "title": "Space Exploration Ebook",
+    "description": "An ebook that predicts upcoming technology trends for the next year, including AI developments"
+  },
+  {
+    "image": "/img/reports/report3.jpg",
+    "title": "Quantum Computing Whitepaper",
+    "description": "An in-depth whitepaper exploring the principles, applications."
+  }
+]

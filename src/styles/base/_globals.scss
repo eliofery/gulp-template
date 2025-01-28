@@ -5,13 +5,25 @@
 :root {
   --container-width: #{rem(1600)};
   --container-padding-x: #{rem(16)};
+  --scroll-bar: #{rem(15)};
+  --100vw: calc(100vw - var(--scroll-bar));
 
   --font-family-base: 'Oswald', sans-serif;
   --font-family-accent: 'Roboto', sans-serif;
 
   --color-light: #{hextorgb(#fff)};
   --color-dark: #{hextorgb(#141414)};
+  --color-dark-10: #{hextorgb(#1a1a1a)};
+  --color-dark-15: #{hextorgb(#262626)};
+  --color-dark-20: #{hextorgb(#333333)};
+  --color-dark-40: #{hextorgb(#666666)};
+  --color-gray-50: #{hextorgb(#7e7e81)};
+  --color-gray-60: #{hextorgb(#98989a)};
   --color-accent: #{hextorgb(#ffd11a)};
+  --color-red: #{hextorgb(#ff5500)};
+
+  --border: #{rem(1)} solid rgb(var(--color-dark-15));
+  --shadow: 0 0 0 #{rem(3)} #191919;
 
   --transition-duration: 0.2s;
 
@@ -23,11 +35,23 @@
 body {
   @include fluid-text(18, 14);
 
-  color: var(--color-light);
+  min-width: rem($minViewportWidth);
+
+  color: rgb(var(--color-gray-50));
   font-family: var(--font-family-base);
   letter-spacing: -0.03em;
 
-  background-color: var(--color-dark);
+  background-color: rgb(var(--color-dark));
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex-grow: 1;
 }
 
 h1,
@@ -42,7 +66,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: var(--color-accent);
+  color: rgb(var(--color-light));
 }
 
 h1,
@@ -112,27 +136,18 @@ a {
   color: inherit;
 
   @include hover {
-    color: var(--color-accent);
+    color: rgb(var(--color-accent));
   }
 }
 
 :focus-visible {
-  outline: rem(2) dashed var(--color-light);
+  border-radius: rem(12);
+  outline: rem(2) dashed rgb(var(--color-light));
   outline-offset: rem(4);
 
   transition-duration: 0s !important;
-}
 
-a,
-button {
-  &[aria-label] {
-    position: relative;
-
-    &::before {
-      @include abs-center;
-      @include square(rem(44));
-
-      content: attr(aria-label);
-    }
+  @include laptop {
+    border-radius: rem(8);
   }
 }

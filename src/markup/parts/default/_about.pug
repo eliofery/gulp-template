@@ -1,0 +1,16 @@
+section.about(aria-labelledby="about-title")
+  div.container.about__inner
+    header.about__header
+      +icon('icon-logo')(class="about__icon", width="150", height="150", aria-hidden="false", aria-label="Logotype")
+      div.about__info
+        p.tag.about__subtitle Learn, Connect, and Innovate
+        h2#about-title.about__title Be Part of the Future Tech Revolution
+      div.about__description
+        p Immerse yourself in the world of future technology. Explore our comprehensive resources, connect with fellow tech enthusiasts, and drive innovation in the industry. Join a dynamic community of forward-thinkers.
+    ul.about__list
+      each about in jsonData.mainAbout
+        li.about__item
+          a.tile.about-card(href="/")
+            h3.about-card__title.circle-icon #{about.title}
+            div.about-card__description
+              p #{about.description}

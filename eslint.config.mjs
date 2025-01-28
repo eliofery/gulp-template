@@ -7,7 +7,7 @@ import tsParser from '@typescript-eslint/parser'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['node_modules', 'build'],
+    ignores: ['node_modules', 'build', 'gulp', 'modernizr.js'],
   },
 
   jsPlugin.configs.recommended,

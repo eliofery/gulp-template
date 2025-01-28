@@ -1,0 +1,97 @@
+@use '../base/helpers' as *;
+
+.tabs {
+  &__header {
+    position: sticky;
+    top: rem(164);
+
+    background-color: rgb(var(--color-dark));
+    border-bottom: var(--border);
+
+    @include tablet {
+      overflow-x: auto;
+    }
+
+    @include mobile {
+      top: rem(127);
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding-block: fluid(50, 20);
+
+    column-gap: rem(20);
+
+    @include laptop {
+      column-gap: rem(14);
+    }
+
+    @include tablet {
+      width: max-content;
+    }
+
+    &--compact {
+      display: inline-flex;
+      padding: rem(10);
+
+      column-gap: rem(10);
+
+      background-color: rgb(var(--color-dark));
+      border-radius: rem(10);
+
+      .tabs__button {
+        padding-block: rem(18);
+
+        &.is-active {
+          background-color: rgb(var(--color-dark-15));
+        }
+
+        @include laptop {
+          padding-block: rem(14);
+        }
+      }
+    }
+  }
+
+  &__button {
+    padding: fluid(10, 18) rem(11);
+
+    color: rgb(var(--color-gray-60));
+    font-size: rem(18);
+
+    background-color: transparent;
+    border: var(--border);
+    border-radius: rem(8);
+
+    @include hover {
+      color: rgb(var(--color-accent));
+
+      border-color: rgb(var(--color-accent));
+    }
+
+    @include laptop {
+      font-size: rem(14);
+    }
+
+    &.is-active {
+      color: rgb(var(--color-light));
+      font-weight: 500;
+
+      background-color: rgb(var(--color-dark-10));
+
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    &:not(.is-active) {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline-offset: -1rem;
+    }
+  }
+}

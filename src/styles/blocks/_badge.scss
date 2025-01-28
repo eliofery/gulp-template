@@ -1,0 +1,23 @@
+@use '../base/helpers' as *;
+
+.badge {
+  display: inline-flex;
+  padding: fluid(4, 2) fluid(14, 10);
+
+  color: rgb(var(--color-light));
+  font-size: rem(16);
+
+  background:
+    linear-gradient(rgb(var(--color-dark-10)), rgb(var(--color-dark-10))) padding-box,
+    linear-gradient(45deg, rgb(var(--color-dark-15)) 64%, rgb(var(--color-accent)) 136%) border-box;
+  border: rem(1) solid transparent;
+  border-radius: rem(6);
+
+  pointer-events: none;
+
+  @include laptop {
+    font-size: rem(14);
+
+    border-radius: rem(4);
+  }
+}

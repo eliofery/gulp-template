@@ -114,6 +114,17 @@ ul
     if item.links
       each link, i in item.links
         li #{ index }.#{ i } | #{ item.title } | #{ item.link }
+
+each button, index in jsonData.exploreTabs
+  button.btn(
+    id=("tab-" + (index + 1))
+    class=(!index && 'is_active')
+    type="button",
+    data-js-tabs-button,
+    role="tab",
+    aria-controls=("tabpanel-" + (index + 1))
+    aria-selected="false",
+  ) #{button.name}
 ```
 
 ## Markdown разметка

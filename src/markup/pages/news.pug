@@ -1,0 +1,189 @@
+extends ../layouts/_default.pug
+
+block variables
+  - const pageTitle = "News page";
+  - const pageDescription = "Explore the latest news from around the world";
+  - const pageLink = "/news.html";
+
+block content
+  section.hero-alt(aria-labelledby="new-title")
+    header.hero-alt__header
+      div.container.hero-alt__header-inner
+        h1#new-title.hero-alt__title
+          | Today's Headlines: Stay
+          span.hero-alt__title-hidden-part  Informed
+        p.hero-alt__subtitle.h1.hidden-mobile(aria-hidden="true") Informed
+        p.hero-alt__description Explore the latest news from around the world. We bring you up-to-the-minute updates on the most significant events, trends, and stories. Discover the world through our news coverage.
+    div.hero-alt__body
+      ul.list
+        - const newsFirst = jsonData.newsBlog[0]
+        li.list__item
+          article.container.news-card
+            +picture(newsFirst.image, isLaptop=true, isTablet=false, isMobile=true)(
+              class="news-card__image",
+              width="515",
+              height="427",
+              alt=newsFirst.title
+            )
+            div.news-card__body
+              h2.news-card__title #{newsFirst.title}
+              div.news-card__description
+                p #{newsFirst.description}
+            div.news-card__summary.summary
+              dl.summary__list
+                each summary in newsFirst.summary
+                  div.summary__item
+                    dt.summary__key #{summary.title}
+                    dd.summary__value
+                      if summary.title == 'Publication Date'
+                        time(datetime="2023-10-10") #{summary.description}
+                      else
+                        | #{summary.description}
+            div.news-card__controls
+              div.news-card__actions.blog-actions
+                ul.blog-actions__list
+                  each action in ['like', 'shared']
+                    li.blog-actions__item
+                      button.blog-actions__button(
+                        type="button",
+                        title=toFirstUpperCase(action),
+                        aria-label=toFirstUpperCase(action)
+                      )
+                        +icon(`icon-${action}`)(class="blog-actions__icon " + isActive, width="24", height="24")
+                        span #{newsFirst.actions[action]}
+              a.button.blog-card__link(href="/") Read More
+        li.list__item
+          div.container.news
+            ul.news__list
+              each news in jsonData.newsBlog.slice(1)
+                li.news__item
+                  article.news-card
+                    +picture(news.image, isLaptop=true, isTablet=false, isMobile=true)(
+                      class="news-card__image",
+                      width="512",
+                      height="222",
+                      alt=news.title
+                    )
+                    div.news-card__body
+                      h2.news-card__title.h6 #{news.title}
+                      div.news-card__description
+                        p #{news.description}
+                    div.news-card__controls
+                      div.news-card__actions.blog-actions
+                        ul.blog-actions__list
+                          each action in ['like', 'shared']
+                            li.blog-actions__item
+                              button.blog-actions__button(
+                                type="button",
+                                title=toFirstUpperCase(action),
+                                aria-label=toFirstUpperCase(action)
+                              )
+                                +icon(`icon-${action}`)(class="blog-actions__icon " + isActive, width="24", height="24")
+                                span #{news.actions[action]}
+                      +button("Read More")(class="blog-card__link")
+
+  section.section(aria-labelledby="new-tabs-title")
+    header.section__header
+      div.container.section__header-inner
+        div.section__header-info
+          p.section__subtitle.tag Welcome to Our News Hub
+          h2#new-tabs-title.section__title Discover the World of Headlines
+        div.section__actions
+          +button("View All News", "/new.html")(class="section__link")
+
+    div.section__body.tabs(data-js-tabs)
+      h3#new-category-title.sr-only News category
+      header.tabs__header
+        div.container.tabs__buttons(
+          role="tablist",
+          aria-labelledby="new-category-title"
+        )
+          each tab, index in jsonData.mainTabs
+            button.tabs__button(
+              id=("tab-" + (index + 1)),
+              class=(!index && 'is-active'),
+              type="button",
+              data-js-tabs-button,
+              role="tab",
+              aria-controls=("tabpanel-" + (index + 1)),
+              aria-selected=(!index ? 'true' : 'false'),
+              tabindex=(index && '-1')
+            ) #{tab.department}
+      div.tabs__body
+        each tab, index in jsonData.mainTabs
+          div.tabs__content(
+            id=("tabpanel-" + (index + 1)),
+            class=(!index && 'is-active'),
+            aria-labelledby=("tab-" + (index + 1)),
+            tabindex="0",
+            data-js-tabs-content
+          )
+            ul.list
+              each item, index in tab.items
+                li.list__item
+                  article.container.blog-card
+                    div.blog-card__author.person-card
+                      +picture(item.author.image, isLaptop=false, isTablet=false, isMobile=false)(
+                        class="person-card__image",
+                        width="80",
+                        height="80",
+                        alt=item.author.name
+                      )
+                      div.person-card__body
+                        p.person-card__name #{item.author.name}
+                        p.person-card__department #{item.author.department}
+                    div.blog-card__body
+                      time.blog-card__date.h6(datetime=item.content.created.datetime) #{item.content.created.date}
+                      div.blog-card__info
+                        h4.blog-card__title #{item.content.title}
+                        div.blog-card__description
+                          p #{item.content.description}
+                      div.blog-card__actions.blog-actions
+                        ul.blog-actions__list
+                          each action, idx in ['like', 'message', 'shared']
+                            - const isActive = action === 'like' && !index ? 'is-active' : '';
+                            li.blog-actions__item
+                              button.blog-actions__button(
+                                class=(!idx && 'is-active'),
+                                type="button",
+                                title="Dislike",
+                                aria-label="Dislike"
+                              )
+                                +icon("icon-" + action)(class="blog-actions__icon " + isActive, width="24", height="24")
+                                span #{item.content.actions[action]}
+                    +button("Read More", "/new.html")(class="blog-card__link")
+
+  section.section(aria-labelledby="videos-title")
+    header.section__header
+      div.container.section__header-inner
+        div.section__header-info
+          p.section__subtitle.tag Featured Videos
+          h2#videos-title.section__title Visual Insights for the Modern Viewer
+        div.section__actions
+          +button("View All", "/")(class="section__link")
+    div.section__body
+      ul.container.bordered-grid.bordered-grid--2-cols
+        each video in jsonData.newsVideo
+          li.bordered-grid__item
+            div.video-card
+              div.video-card__player.video-player(data-js-video-player)
+                video.video-player__video(
+                  src="videos/example.mp4",
+                  width="718",
+                  height="412",
+                  poster=video.poster,
+                  data-js-video-player-video
+                )
+                div.video-player__panel.is-active(data-js-video-player-panel)
+                  button.video-player__play-button(
+                    type="button",
+                    title="Play video",
+                    aria-label="Play video",
+                    data-js-video-player-play-button
+                  )
+                    +icon("icon-play")(class="video-player__icon", width="58", height="58")
+                  div.video-player__duration #{video.time}
+              div.video-card__body
+                h3.video-card__title.h5 #{video.title}
+                div.video-card__description
+                  p #{video.description}

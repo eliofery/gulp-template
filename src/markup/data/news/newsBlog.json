@@ -1,0 +1,52 @@
+[
+  {
+    "image": "/img/news/new1.jpg",
+    "title": "Global Climate Summit Addresses Urgent Climate Action",
+    "description": "World leaders gathered at the Global Climate Summit to discuss urgent climate action, emissions reductions, and renewable energy targets.",
+    "summary": [
+      {
+        "title": "Category",
+        "description": "Environment"
+      },
+      {
+        "title": "Publication Date",
+        "description": "October 10, 2023"
+      },
+      {
+        "title": "Author",
+        "description": "Jane Smith"
+      }
+    ],
+    "actions": {
+      "like": "14k",
+      "shared": "204"
+    }
+  },
+  {
+    "image": "/img/news/new2.jpg",
+    "title": "A Decisive Victory for Progressive Policies",
+    "description": "Politics",
+    "actions": {
+      "like": "2.2k",
+      "shared": "60"
+    }
+  },
+  {
+    "image": "/img/news/new3.jpg",
+    "title": "Tech Giants Unveil Cutting-Edge AI Innovations",
+    "description": "Technology",
+    "actions": {
+      "like": "6k",
+      "shared": "92"
+    }
+  },
+  {
+    "image": "/img/news/new4.jpg",
+    "title": "COVID-19 Variants",
+    "description": "Health",
+    "actions": {
+      "like": "10k",
+      "shared": "124"
+    }
+  }
+]

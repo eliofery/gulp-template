@@ -1,0 +1,50 @@
+[
+  {
+    "icon": "icon-podcast-1",
+    "title": "AI Revolution",
+    "host": "Dr. Sarah Mitchell",
+    "content": {
+      "poster": "/img/podcasts/poster1.jpg",
+      "title": "Delves into the transformative impact of AI",
+      "description": "Join Dr. Sarah Mitchell as she delves into the transformative impact of AI on industries, featuring expert interviews and real-world case studies. Explore the possibilities of AI in healthcare, finance, and more.",
+      "list": [
+        {
+          "title": "Total Episodes",
+          "description": "50"
+        },
+        {
+          "title": "Average Episode Length",
+          "description": "30 min"
+        },
+        {
+          "title": "Release Frequency",
+          "description": "Weekly"
+        }
+      ]
+    }
+  },
+  {
+    "icon": "icon-podcast-2",
+    "title": "AI Conversations",
+    "host": "Mark Anderson",
+    "content": {
+      "poster": "/img/podcasts/poster2.jpg",
+      "title": "Engage in thought-provoking conversations with leading experts.",
+      "description": "Mark discusses the future of AI, the impact on society, and how it's shaping industries worldwide. Engage in thought-provoking conversations with leading experts.",
+      "list": [
+        {
+          "title": "Total Episodes",
+          "description": "40"
+        },
+        {
+          "title": "Average Episode Length",
+          "description": "40 min"
+        },
+        {
+          "title": "Release Frequency",
+          "description": "Monthly"
+        }
+      ]
+    }
+  }
+]

@@ -13,7 +13,7 @@
  */
 
 // Сторонние библиотеки
-import { src, dest, watch } from 'gulp' // gulp плагин
+import { src, dest, watch, series } from 'gulp' // gulp плагин
 import plumber from 'gulp-plumber' // перехватывает ошибки
 import notify from 'gulp-notify' // уведомляет об ошибках
 import svg2png from 'gulp-svg2png' // svg в png
@@ -24,12 +24,14 @@ import ico from 'gulp-to-ico' // png в ico
 // Конфиги
 import config from '../config.mjs'
 
+const faviconSvg = `${config.src.assets.favicons}/favicon.svg`
+
 // Сборка таска
 export const faviconBuild = () => {
   process.env.OPENSSL_CONF = '/dev/null'
 
   return (
-    src(`${config.src.assets.favicons}/favicon.svg`) // входящий файл
+    src(faviconSvg) // входящий файл
       .pipe(
         // Отлавливаем и показываем ошибки в таске
         plumber({
@@ -52,7 +54,7 @@ export const faviconBuild = () => {
         }),
       )
       .pipe(rename('favicon-512.png')) // переименование файла
-      .pipe(dest(config.build.images)) // исходящий файл
+      .pipe(dest(config.src.assets.favicons)) // исходящий файл
 
       // изменение разрешения картинки на 192х192
       .pipe(
@@ -64,7 +66,7 @@ export const faviconBuild = () => {
         }),
       )
       .pipe(rename('favicon-192.png')) // переименование файла
-      .pipe(dest(config.build.images)) // исходящий файл
+      .pipe(dest(config.src.assets.favicons)) // исходящий файл
 
       // изменение разрешения картинки на 180х180
       .pipe(
@@ -76,7 +78,7 @@ export const faviconBuild = () => {
         }),
       )
       .pipe(rename('apple-touch-icon.png')) // переименование файла
-      .pipe(dest(config.build.images)) // исходящий файл
+      .pipe(dest(config.src.assets.favicons)) // исходящий файл
 
       // изменение разрешения картинки на 32х32
       .pipe(
@@ -88,10 +90,10 @@ export const faviconBuild = () => {
         }),
       )
       .pipe(ico('favicon.ico')) // переименование файла
-      .pipe(dest(config.build.images)) // исходящий файл
-      .pipe(browserSync.stream())
-  ) // обновление страницы в браузере
+      .pipe(dest(config.src.assets.favicons)) // исходящий файл
+      .pipe(browserSync.stream()) // обновление страницы в браузере
+  )
 }
 
 // Слежение за изменением файлов
-export const faviconWatch = () => watch(`${config.src.assets.images}/favicons/favicon.svg`, faviconBuild)
+export const faviconWatch = () => watch(faviconSvg, faviconBuild)

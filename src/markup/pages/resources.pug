@@ -1,0 +1,117 @@
+extends ../layouts/_default.pug
+
+block variables
+  - const pageTitle = "Resources page";
+  - const pageDescription = "Unlock a World of Knowledge";
+  - const pageLink = "/resources.html";
+
+block content
+  section.hero-alt(aria-labelledby="resources-title")
+    header.hero-alt__header
+      div.container.hero-alt__header-inner
+        h1#resources-title.hero-alt__title
+          | Unlock a World of
+          span.hero-alt__title-hidden-part  Knowledge
+        p.hero-alt__subtitle.h1.hidden-mobile(aria-hidden="true") Knowledge
+        p.hero-alt__description Dive deep into the AI universe with our collection of insightful podcasts. Explore the latest trends, breakthroughs, and discussions on artificial intelligence. Whether you're an enthusiast or a professional, our AI podcasts offer a gateway to knowledge and innovation.
+    div.hero-alt__body
+      div.container.metrics.metrics--4-cols
+        dl.metrics__list
+          div.metrics__item
+            dt.metrics__title Resources available
+            dd.h2.metrics__desc
+              | 300
+              span.metrics__sign +
+          div.metrics__item
+            dt.metrics__title Total Downloads
+            dd.h2.metrics__desc
+              | 12k
+              span.metrics__sign +
+          div.metrics__item
+            dt.metrics__title Active Users
+            dd.h2.metrics__desc
+              | 10k
+              span.metrics__sign +
+          div.metrics__item
+            dt.metrics__title Countries Accesses Our Content
+            dd.h2.metrics__desc
+              | 100
+              span.metrics__sign +
+  section.section.tabs(aria-labelledby="reports-title", data-js-tabs)
+    header.section__header
+      div.container.section__header-inner
+        div.section__header-info
+          p.section__subtitle.tag Dive into the Details
+          h2#reports-title.section__title In-Depth Reports and Analysis
+        div.section__actions
+          div.tabs__buttons.tabs__buttons--compact(
+            role="tablist",
+            aria-labelledby="reports-title"
+          )
+            each tab, index in jsonData.reportTabs
+              button.tabs__button(
+                id=("tab-" + (index + 1)),
+                class=(!index && 'is-active'),
+                type="button",
+                data-js-tabs-button,
+                role="tab",
+                aria-controls=("tabpanel-" + (index + 1)),
+                aria-selected=(!index ? 'true' : 'false'),
+                tabindex=(index && '-1')
+              ) #{tab.category}
+    div.section__body
+      div.tabs__body
+        each tab, index in jsonData.reportTabs
+          div.tabs__content(
+            id=("tabpanel-" + (index + 1)),
+            class=(!index && 'is-active'),
+            aria-labelledby=("tab-" + (index + 1)),
+            tabindex="0",
+            data-js-tabs-content
+          )
+            ul.list
+              each item, index in tab.items
+                li.list__item
+                  div.container.card
+                    div.card__preview
+                      div.card__preview-main
+                        +icon(item.icon)(class="card__preview-icon", width="80", height="80")
+                        div.card__preview-info
+                          h3.card__preview-title #{item.title}
+                          div.card__preview-description
+                            p #{item.description}
+                    div.card__body
+                      div.card__grid.card__grid--3-cols-alt
+                        div.card__cell.card__cell--wide
+                          +picture(item.content.image, isLaptop=true, isTablet=false, isMobile=true)(
+                            class="card__cell-image",
+                            width="917",
+                            height="332"
+                          )
+                        div.card__cell.card__cell--wide
+                          h4.card__cell-title #{item.content.title}
+                          p.card__cell-description #{item.content.description}
+                          +button("Download PDF Now")(class="button--dark-gray card__cell-link")
+                        each listItem, index in item.content.list
+                          div.tile.card__cell(class=index === 2 ? 'card__cell--wide-on-mobile-s' : '')
+                            p.card__cell-title #{listItem.title}
+                            if listItem.title === 'Publication Date'
+                              time.card__cell-description.h6(datetime="2023-07") #{listItem.description}
+                            else
+                              p.card__cell-description.h6 #{listItem.description}
+            ul.container.bordered-grid.bordered-grid--3-cols
+              each item in jsonData.reportList
+                li.bordered-grid__item
+                  div.report-card
+                    +picture(item.image, isLaptop=true, isTablet=false, isMobile=true)(class="report-card__image",
+                      width="470",
+                      height="290",
+                      alt=item.title
+                    )
+                    .report-card__body
+                      h3.report-card__title.h6 #{item.title}
+                      div.report-card__description
+                        p #{item.description}
+                      div.report-card__actions
+                        a.button.report-cart__details-link(href="/") View Details
+                        a.button.button--dark-gray.report-cart__details-link(href="/", download) Download PDF Now
