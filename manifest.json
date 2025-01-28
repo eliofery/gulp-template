@@ -14,17 +14,17 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "img/icon-192.png",
+      "src": "img/favicon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "img/icon-512.png",
+      "src": "img/favicon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "img/icon.svg",
+      "src": "img/favicon.svg",
       "sizes": "any",
       "type": "image/svg",
       "purpose": "maskable"
