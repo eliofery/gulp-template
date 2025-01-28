@@ -13,17 +13,10 @@
 
   --color-light: #{hextorgb(#fff)};
   --color-dark: #{hextorgb(#141414)};
-  --color-dark-10: #{hextorgb(#1a1a1a)};
-  --color-dark-15: #{hextorgb(#262626)};
-  --color-dark-20: #{hextorgb(#333333)};
-  --color-dark-40: #{hextorgb(#666666)};
-  --color-gray-50: #{hextorgb(#7e7e81)};
-  --color-gray-60: #{hextorgb(#98989a)};
   --color-accent: #{hextorgb(#ffd11a)};
-  --color-red: #{hextorgb(#ff5500)};
 
-  --border: #{rem(1)} solid rgb(var(--color-dark-15));
-  --shadow: 0 0 0 #{rem(3)} #191919;
+  --border: #{rem(1)} solid rgb(var(--color-accent));
+  --shadow: 0 0 0 #{rem(3)} rgba(var(--color-dark), 0.5);
 
   --transition-duration: 0.2s;
 
@@ -37,9 +30,8 @@ body {
 
   min-width: rem($minViewportWidth);
 
-  color: rgb(var(--color-gray-50));
+  color: rgb(var(--color-light));
   font-family: var(--font-family-base);
-  letter-spacing: -0.03em;
 
   background-color: rgb(var(--color-dark));
 }
