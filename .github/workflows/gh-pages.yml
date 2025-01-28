@@ -2,9 +2,9 @@ name: NodeJS with Gulp
 
 on:
   push:
-    branches: ['main', 'futuretech']
+    branches: ['futuretech']
   pull_request:
-    branches: ['main', 'futuretech']
+    branches: ['futuretech']
 
 jobs:
   build:
@@ -27,34 +27,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y imagemagick graphicsmagick
 
-      - name: Build for main branch
-        if: github.ref == 'refs/heads/main'
-        run: |
-          npm ci
-          lint-staged
-          npm run build
-          echo "Build for main completed"
-
-      - name: Deploy to GitHub Pages (main)
-        if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: ./build
-          branch: gh-pages
-          target_folder: main
-
       - name: Build for futuretech branch
-        if: github.ref == 'refs/heads/futuretech'
         run: |
-          npm ci
-          lint-staged
+          yarn install --frozen-lockfile --ignore-engines
+          yarn lint-staged
           npm run build
           echo "Build for futuretech completed"
 
       - name: Deploy to GitHub Pages (futuretech)
-        if: github.ref == 'refs/heads/futuretech'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./build
           branch: gh-pages
-          target_folder: futuretech
+          target-folder: futuretech

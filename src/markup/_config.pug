@@ -1,7 +1,7 @@
 //- dev или prod
-- const env = "dev";
+- const env = "prod";
 
-- const version = "0.2.0";
+- const version = "1.0.0";
 
 - let baseUrl = "/";
 - const siteUrl = "http://localhost:3000";
@@ -18,5 +18,5 @@
 //- Актуально если сборка отправляется в github pages
 //- gulp-template - имя репозитория, который отправляется в github page
 //- Раскомментируйте условие и измените ссылку на свою
-//- - if (env === "prod")
-//- -   baseUrl = "/gulp-template/";
+- if (env === "prod")
+-   baseUrl = "/gulp-template/futuretech/";
