@@ -15,6 +15,7 @@ import pugIncludeGlob from 'pug-include-glob' // позволяет исполь
 import fs from 'fs' // чтение файлов
 import gulpif from 'gulp-if' // вызывает функции по условию
 import replace from 'gulp-replace' // замена текста внутри файла
+import newer from 'gulp-newer'
 
 // Дополнительные markdown библиотеки
 import jstransformer from 'jstransformer' // для преобразования содержимого
@@ -36,79 +37,114 @@ import config from '../config.mjs'
 // Далее значение этого объекта в pug файле можно будет получить примерно так:
 // #{jsonData.nav.home.link}
 const getData = () => {
-  const dir = config.src.markup.data // здесь ищем json файлы
-  const files = fs.readdirSync(dir) // получаем список всех файлов в каталоге
-  const data = {} // хранит данные файлов
+  const dir = config.src.markup.data // основной каталог
+  const data = {} // объект для хранения данных
 
-  // Проходимся по каждому файлу
-  files.forEach(file => {
-    if (!file.endsWith('.json')) return // пропускаем только json файлы
+  // Рекурсивная функция обхода файлов и каталогов
+  const readDirRecursive = currentDir => {
+    const files = fs.readdirSync(currentDir) // получаем список файлов и папок
 
-    const fileName = file.replace('.json', '') // формируем имя файла без его расширения
+    files.forEach(file => {
+      const fullPath = `${currentDir}/${file}` // полный путь до файла или папки
+      const stat = fs.statSync(fullPath) // проверяем тип (файл или каталог)
 
-    // Создаем ключ с названием файла в объекте data и помещаем в него содержимое файла
-    data[fileName] = JSON.parse(fs.readFileSync(`${dir}/${file}`, 'utf8'))
-  })
+      if (stat.isDirectory()) {
+        // Если это каталог, вызываем функцию рекурсивно
+        readDirRecursive(fullPath)
+      } else if (file.endsWith('.json')) {
+        // Если это JSON-файл, добавляем его данные
+        const fileName = file.replace('.json', '') // убираем расширение из имени
+        // создаем ключ с названием файла в объекте data и помещаем в него содержимое файла
+        data[fileName] = JSON.parse(fs.readFileSync(fullPath, 'utf8'))
+      }
+    })
+  }
+
+  readDirRecursive(dir) // запускаем обход с основного каталога
 
   return data
 }
 
-// Pug в Html
-export const pugToHtml = () =>
+const getOptions = () => ({
+  doctype: 'html', // чтобы не было обратного слеша у одиночных тэгов
+  pretty: true, // форматирует разметку без минификации
+  plugins: [pugIncludeGlob()], // подключаем сторонние pug плагины
+  locals: {
+    // Пользовательские данные передаваемые в pug.
+    // Пример использования в шаблоне pug: #{jsonData.nav.home.link}
+    jsonData: getData(),
+  },
+  filters: {
+    // Переопределяем pug фильтр markdown-it, улучшая его стандартную функциональность
+    'markdown-it': (text, options) => {
+      // inline режим добавляет/убирает обертку в виде тега <p>
+      const inline = options.inline || false
+
+      return md.render(text, {
+        plugins: [kbd, markdownItAttrs], // подключаем дополнительные плагины
+        inline, // включаем/отключаем inline режим
+      }).body
+    },
+
+    // Пользовательский фильтр
+    // @var options {} имеет один параметр path, хранящий путь до critical.scss
+    'critical-css': (text, options) => {
+      const css = jstscss.render(options.path).body // компилирует scss в css
+      css.replaceAll('&quot;', '"') // jstscss при компиляции заменяет " на &quot; что не есть хорошо
+
+      // минифицирует получившейся css файл, удаляя комментарии
+      return jstminify.render(css, {
+        level: {
+          1: {
+            specialComments: 0,
+          },
+        },
+      }).body
+    },
+
+    // Пользовательский фильтр экранирования html тегов
+    'special-chars': text => text.replaceAll('<', '&lt;').replaceAll('>', '&gt;'),
+  },
+})
+
+// При изменении страниц
+const changePages = () =>
   src([`${config.src.markup.pages}/**/*.pug`]) // входящие файлы
     .pipe(
       // Отлавливаем и показываем ошибки в таске
       plumber({
         errorHandler: notify.onError(err => ({
-          title: 'Ошибка в задаче pugBuild', // заголовок ошибки
+          title: 'Ошибка в задаче changePages', // заголовок ошибки
           sound: false, // уведомлять звуком
           message: err.message, // описание ошибки
         })),
       }),
     )
     .pipe(
-      pug({
-        doctype: 'html', // чтобы не было обратного слеша у одиночных тэгов
-        pretty: config.isDev, // сжатие html разметки
-        plugins: [pugIncludeGlob()], // подключаем сторонние pug плагины
-        locals: {
-          // Пользовательские данные передаваемые в pug.
-          // Пример использования в шаблоне pug: #{jsonData.nav.home.link}
-          jsonData: getData(),
-        },
-        filters: {
-          // Переопределяем pug фильтр markdown-it, улучшая его стандартную функциональность
-          'markdown-it': (text, options) => {
-            // inline режим добавляет/убирает обертку в виде тега <p>
-            const inline = options.inline || false
-
-            return md.render(text, {
-              plugins: [kbd, markdownItAttrs], // подключаем дополнительные плагины
-              inline, // включаем/отключаем inline режим
-            }).body
-          },
-
-          // Пользовательский фильтр
-          // @var options {} имеет один параметр path, хранящий путь до critical.scss
-          'critical-css': (text, options) => {
-            const css = jstscss.render(options.path).body // компилирует scss в css
-            css.replaceAll('&quot;', '"') // jstscss при компиляции заменяет " на &quot; что не есть хорошо
-
-            // минифицирует получившейся css файл, удаляя комментарии
-            return jstminify.render(css, {
-              level: {
-                1: {
-                  specialComments: 0,
-                },
-              },
-            }).body
-          },
-
-          // Пользовательский фильтр экранирования html тегов
-          'special-chars': text => text.replaceAll('<', '&lt;').replaceAll('>', '&gt;'),
-        },
+      // преобразуем только добавленные или измененные файлы
+      newer({
+        dest: config.build.root,
+        ext: '.html',
       }),
     )
+    .pipe(pug(getOptions()))
+    .pipe(dest(config.build.root)) // исходящие файлы
+    .pipe(browserSync.stream()) // обновление страницы в браузере
+
+// При изменении подключаемых файлов
+const changeIncludes = () =>
+  src([`${config.src.markup.pages}/**/*.pug`]) // входящие файлы
+    .pipe(
+      // Отлавливаем и показываем ошибки в таске
+      plumber({
+        errorHandler: notify.onError(err => ({
+          title: 'Ошибка в задаче changeIncludes', // заголовок ошибки
+          sound: false, // уведомлять звуком
+          message: err.message, // описание ошибки
+        })),
+      }),
+    )
+    .pipe(pug(getOptions()))
     .pipe(dest(config.build.root)) // исходящие файлы
     .pipe(browserSync.stream()) // обновление страницы в браузере
 
@@ -132,16 +168,20 @@ const versionSet = () => {
 }
 
 // Сборка таска
-export const pugBuild = series(envSet, versionSet, pugToHtml)
+export const pugBuild = series(envSet, versionSet, changePages)
 
 // Слежение за изменением файлов
 export const pugWatch = () => {
+  watch([`${config.src.markup.pages}/**/*.pug`], changePages)
+
   watch(
     [
       `${config.src.markup.root}/**/*.pug`,
-      `${config.src.markup.root}/data/**/*`,
-      // `${config.src.assets.icons.root}/sprite-*.svg`,
+      `!${config.src.markup.pages}/**/*.pug`,
+      `${config.src.markup.data}/**/*`,
+      `${config.src.assets.icons.root}/sprite-*.svg`,
+      `${config.src.style}/**/*.{scss,sass}`,
     ],
-    pugToHtml,
+    changeIncludes,
   )
 }

@@ -50,19 +50,32 @@
   position: absolute;
   left: 50%;
 
-  transform: translateX(-50%);
+  translate: -50% 0;
+  //transform: translateX(-50%);
 }
 
 @mixin abs-y {
   position: absolute;
   top: 50%;
 
-  transform: translateY(-50%);
+  translate: 0 -50%;
+  //transform: translateY(-50%);
 }
 
 @mixin square($size) {
   width: $size;
   height: $size;
+}
+
+@mixin button {
+  position: relative;
+
+  &::before {
+    @include abs-center;
+    @include square(rem(44));
+
+    content: '';
+  }
 }
 
 @mixin sr-only {
@@ -80,4 +93,65 @@
 
   clip: rect(0 0 0 0) !important;
   clip-path: inset(100%) !important;
+}
+
+@mixin full-vw-centered-line($property: top, $left: 50%, $right: auto, $translate: -50%) {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    right: $right;
+    left: $left;
+    #{$property}: 0; // top или bottom
+
+    width: var(--100vw);
+    height: rem(1);
+
+    background-color: rgb(var(--color-dark-15));
+
+    translate: $translate;
+
+    content: '';
+  }
+}
+
+@mixin full-vw-line($vertical: bottom, $horizontal: left) {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+
+    width: calc((var(--100vw) - var(--container-width)) / 2);
+    min-width: var(--container-padding-x);
+    height: rem(1);
+
+    background-color: rgb(var(--color-dark-15));
+  }
+
+  @if $vertical == top {
+    &::before {
+      bottom: 100%;
+
+      content: '';
+    }
+  } @else if $vertical == bottom {
+    &::after {
+      top: 100%;
+
+      content: '';
+    }
+  }
+
+  @if $horizontal == left {
+    &::before,
+    &::after {
+      right: 100%;
+    }
+  } @else if $horizontal == right {
+    &::before,
+    &::after {
+      left: 100%;
+    }
+  }
 }

@@ -4,10 +4,11 @@
   "description": "Gulp сборка для продуктивной верстки.",
   "scripts": {
     "prepare": "husky install",
+    "modernizr": "gulp modernizr",
     "proxy": "gulp proxy",
-    "watch": "gulp",
+    "dev": "gulp",
     "build": "gulp build --production",
-    "editor-check": "editorconfig-checker --exclude '.git|node_modules|.husky|build'",
+    "editor-check": "editorconfig-checker --exclude '.git|node_modules|.husky|build|modernizr.js'",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --fix",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@csstools/postcss-media-minmax": "^2.0.6",
     "@eslint/js": "^9.17.0",
     "@typescript-eslint/parser": "^8.18.1",
     "autoprefixer": "^10.4.20",
@@ -72,10 +74,12 @@
     "markdown-it-attrs": "^4.3.0",
     "markdown-it-kbd": "^2.2.2",
     "merge-stream": "^2.0.0",
+    "modernizr": "^3.13.1",
     "postcss": "^8.4.49",
     "postcss-custom-media": "^11.0.5",
     "postcss-discard-comments": "^7.0.3",
     "postcss-import": "^16.1.0",
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.4.2",
     "pug-include-glob": "^0.4.3",
     "pug-lint": "^2.7.0",
@@ -90,18 +94,21 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
+    "uglify-js": "^3.19.3",
     "vinyl-named-with-path": "^1.0.0",
     "webpack": "^5.97.1",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "highlight.js": "^11.11.0"
+    "highlight.js": "^11.11.0",
+    "imask": "^7.6.1",
+    "normalize.css": "^8.0.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "lint-staged": {
     "*": [
-      "npm run editor-check",
-      "npm run format"
+      "npm run format",
+      "npm run editor-check"
     ],
     "*.pug": "npm run lint:pug",
     "*.{scss,sass}": "npm run lint:style",

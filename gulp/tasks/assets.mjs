@@ -20,11 +20,18 @@ const rootBuild = () =>
 // Переносит в build/fonts
 const fontsBuild = () => src([`${config.src.assets.fonts}/**/*`]).pipe(dest(`${config.build.fonts}`))
 
+// Переносит в build/videos
+const videosBuild = () =>
+  src([`${config.src.assets.videos}/**/*`], {
+    encoding: false,
+  }).pipe(dest(`${config.build.videos}`))
+
 // Выполнение всех тасков
 export const assetsBuild = series(rootBuild, fontsBuild)
 
 // Слежение за изменением файлов
 export const assetsWatch = () => {
   watch(`${config.src.assets.fonts}/**/*`, fontsBuild)
+  watch(`${config.src.assets.videos}/**/*`, videosBuild())
   watch(`${config.src.assets.root}/*`, rootBuild)
 }

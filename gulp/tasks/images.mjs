@@ -13,18 +13,28 @@ import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin' // о
 import pngQuant from 'imagemin-pngquant' // оптимизирует png изображения
 import webp from 'gulp-webp' // создает webp файлы
 import avif from 'gulp-avif' // создает avif файлы
-import plumber from 'gulp-plumber'
+import plumber from 'gulp-plumber' // перехватывает ошибки
+import notify from 'gulp-notify' // уведомляет об ошибках
 // import filter from 'gulp-filter'
 
 // Конфиги
 import config from '../config.mjs'
-import notify from 'gulp-notify'
 
 // Оптимизация изображений
 export const imageOptim = () =>
   src([`${config.src.assets.images}/**/*`, `${config.src.assets.favicons}/**/*`], {
     encoding: false,
   }) // входящие файлы
+    .pipe(
+      // Отлавливаем и показываем ошибки в таске
+      plumber({
+        errorHandler: notify.onError(err => ({
+          title: 'Ошибка в задаче imageOptim', // заголовок ошибки
+          sound: false, // уведомлять звуком
+          message: err.message, // описание ошибки
+        })),
+      }),
+    )
     .pipe(newer(config.build.images)) // только те изображения которые изменились или были добавлены
     .pipe(
       gulpif(
@@ -82,6 +92,7 @@ export const toWebp = () =>
         })),
       }),
     )
+    .pipe(newer({ dest: config.build.images, ext: '.webp' })) // только те изображения которые изменились или были добавлены
     .pipe(
       webp({
         quality: 80, // уровень оптимизации webp файла
@@ -107,9 +118,11 @@ export const toAvif = () =>
       }),
     )
     // .pipe(filter(file => console.log(/\.(jpg|jpeg|png)$/.test(file.extname))))
+    .pipe(newer({ dest: config.build.images, ext: '.avif' })) // только те изображения которые изменились или были добавлены
     .pipe(
       avif({
         quality: 80, // уровень оптимизации avif файла
+        speed: 8, // нагрузка на CPU, максимум 8, для быстрой оптимизации картинок
       }),
     )
     .pipe(dest(config.build.images)) // разместит оптимизированные webp файлы

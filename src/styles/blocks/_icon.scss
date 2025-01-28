@@ -1,0 +1,7 @@
+@use '../base/helpers' as *;
+
+.icon {
+  &-arrow-top-right {
+    fill: rgb(var(--color-accent));
+  }
+}

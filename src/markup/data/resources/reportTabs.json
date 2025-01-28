@@ -1,0 +1,113 @@
+[
+  {
+    "category": "Whitepapers",
+    "items": [
+      {
+        "icon": "icon-reports-1",
+        "title": "Quantum Computing Whitepaper",
+        "description": "Provides technical specifications and requirements for implementing quantum computing systems.",
+        "content": {
+          "image": "/img/resources/resource3.jpg",
+          "title": "Quantum Computing Whitepaper",
+          "description": "An in-depth whitepaper exploring the principles, applications, and potential impact of quantum computing.",
+          "list": [
+            {
+              "title": "Publication Date",
+              "description": "July 2023"
+            },
+            {
+              "title": "Category",
+              "description": "Quantum Computing"
+            },
+            {
+              "title": "Author",
+              "description": "Dr. Quantum"
+            }
+          ]
+        }
+      },
+      {
+        "icon": "icon-reports-2",
+        "title": "Space Exploration Whitepaper",
+        "description": "Explores Mars colonization, asteroid resource potential, and space tourism.",
+        "content": {
+          "image": "/img/resources/resource4.jpg",
+          "title": "Space Exploration Whitepaper",
+          "description": "An in-depth whitepaper covering the latest advancements in space exploration, including Mars missions and asteroid mining.",
+          "list": [
+            {
+              "title": "Publication Date",
+              "description": "September 2023"
+            },
+            {
+              "title": "Category",
+              "description": "Space Exploration"
+            },
+            {
+              "title": "Author",
+              "description": "FutureTech Space Division"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category": "Ebooks",
+    "items": [
+      {
+        "icon": "icon-reports-1",
+        "title": "Quantum Computing Whitepaper",
+        "description": "Provides technical specifications and requirements for implementing quantum computing systems.",
+        "content": {
+          "image": "/img/resources/resource3.jpg",
+          "title": "Quantum Computing Whitepaper",
+          "description": "An in-depth whitepaper exploring the principles, applications, and potential impact of quantum computing.",
+          "list": [
+            {
+              "title": "Publication Date",
+              "description": "July 2023"
+            },
+            {
+              "title": "Category",
+              "description": "Quantum Computing"
+            },
+            {
+              "title": "Author",
+              "description": "Dr. Quantum"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "category": "Reports",
+    "items": [
+      {
+        "icon": "icon-reports-2",
+        "title": "Space Exploration Whitepaper",
+        "description": "Explores Mars colonization, asteroid resource potential, and space tourism.",
+        "content": {
+          "image": "/img/resources/resource4.jpg",
+          "title": "Space Exploration Whitepaper",
+          "description": "An in-depth whitepaper covering the latest advancements in space exploration, including Mars missions and asteroid mining.",
+          "list": [
+            {
+              "title": "Publication Date",
+              "description": "September 2023"
+            },
+            {
+              "title": "Category",
+              "description": "Space Exploration"
+            },
+            {
+              "title": "Author",
+              "description": "FutureTech Space Division"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

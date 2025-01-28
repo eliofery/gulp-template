@@ -1,3 +1,54 @@
+@use '../../node_modules/highlight.js/styles/a11y-light.css';
+
 @use 'base/fonts';
 
-@import 'highlight.js/styles/a11y-light.css';
+@use 'blocks/metrics';
+@use 'blocks/team';
+@use 'blocks/resources-preview';
+@use 'blocks/advantages-card';
+@use 'blocks/hero';
+
+@use 'blocks/tag';
+@use 'blocks/section';
+@use 'blocks/list';
+@use 'blocks/tile';
+@use 'blocks/card';
+
+@use 'blocks/tabs';
+@use 'blocks/person-card';
+@use 'blocks/blog-actions';
+@use 'blocks/blog-card';
+
+@use 'blocks/download-info';
+
+@use 'blocks/bordered-grid';
+@use 'blocks/review-card';
+@use 'blocks/rating-view';
+
+@use 'blocks/about-card';
+@use 'blocks/about';
+
+@use 'blocks/hero-alt';
+@use 'blocks/summary';
+@use 'blocks/news-card';
+@use 'blocks/news';
+
+@use 'blocks/video-player';
+@use 'blocks/video-card';
+
+@use 'blocks/expandable-content';
+@use 'blocks/table-of-contents';
+@use 'blocks/blog-details';
+
+@use 'blocks/report-card';
+
+@use 'blocks/contacts-card';
+@use 'blocks/field';
+@use 'blocks/select';
+@use 'blocks/checkbox';
+@use 'blocks/feedback-form';
+@use 'blocks/accordion';
+@use 'blocks/accordion-group';
+@use 'blocks/contacts';
+
+@use 'blocks/footer';

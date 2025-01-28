@@ -1,0 +1,45 @@
+- const siteTitle = pageTitle ? `${pageTitle} | ${projectTitle}` : projectTitle;
+- const siteDescription = pageDescription ? pageDescription : projectDescription;
+
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
+meta(name="viewport", content="width=device-width, initial-scale=1")
+
+title #{ siteTitle }
+meta(name="description", content=siteDescription)
+
+script document.documentElement.classList.remove('no-js')
+
+base(href=baseUrl)
+
+//- DNS
+//- link(rel="preconnect", href="http://assets.localhost/", crossorigin)
+//- link(rel="dns-prefetch", href="http://assets.localhost/")
+
+//- Критические стили
+style
+  :critical-css(path="@import 'src/styles/critical'")
+
+//- Стили
+link(rel="preload", as="style", href="css/main.css?v=" + version, onload="this.rel='stylesheet'")
+noscript
+  link(rel="stylesheet", href="css/main.css?v=" + version)
+
+//- Шрифты
+link(rel="preload", as="font", href="fonts/roboto/roboto-regular.woff2", type="font/woff2", crossorigin="anonymous")
+link(rel="preload", as="font", href="fonts/roboto/roboto-medium.woff2", type="font/woff2", crossorigin="anonymous")
+link(rel="preload", as="font", href="fonts/oswald/Oswaldregular.woff2", type="font/woff2", crossorigin="anonymous")
+link(rel="preload", as="font", href="fonts/oswald/Oswaldmedium.woff2", type="font/woff2", crossorigin="anonymous")
+link(rel="preload", as="font", href="fonts/oswald/Oswalddemibold.woff2", type="font/woff2", crossorigin="anonymous")
+link(rel="preload", as="font", href="fonts/oswald/Oswaldbold.woff2", type="font/woff2", crossorigin="anonymous")
+
+//- Стилизация интерфейса устройства пользователя
+meta(name="theme-color", content=themeColor)
+meta(name="msapplication-navbutton-color", content=themeColor)
+meta(name="apple-mobile-web-app-status-bar-style", content=themeColor)
+
+//- Иконки
+link(rel="icon", href="img/favicon.ico", sizes="any")
+link(rel="icon", href="img/favicon.svg", type="image/svg+xml")
+link(rel="apple-touch-icon", href="img/apple-touch-icon.png")
+link(rel="manifest", href="manifest.json")

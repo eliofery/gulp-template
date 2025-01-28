@@ -13,7 +13,7 @@ import browser from 'browser-sync' // локальный сервер
 // Конфиги
 import config from '../config.mjs'
 
-// Глобальный browserSync, позволяет без импорта обращаться к browserSync.stream() внутри других модулей
+// Глобальный browserSync, позволяет без импорта обращаться к browserSync внутри других модулей
 global.browserSync = browser.create()
 
 // Запуск таска

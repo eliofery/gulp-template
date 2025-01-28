@@ -2,50 +2,50 @@
 @use 'functions' as *;
 @use 'variables' as *;
 
-@mixin laptop {
-  @media screen and (max-width: rem($laptop)) {
-    @content;
-  }
-}
-
 @mixin laptop-above {
-  @media screen and (min-width: rem($laptop)) {
+  @media (width > rem($laptop)) {
     @content;
   }
 }
 
-@mixin tablet {
-  @media screen and (max-width: rem($tablet)) {
+@mixin laptop {
+  @media (width <= rem($laptop)) {
     @content;
   }
 }
 
 @mixin tablet-above {
-  @media screen and (min-width: rem($tablet)) {
+  @media (width > rem($tablet)) {
     @content;
   }
 }
 
-@mixin mobile {
-  @media screen and (max-width: rem($mobile)) {
+@mixin tablet {
+  @media (width <= rem($tablet)) {
     @content;
   }
 }
 
 @mixin mobile-above {
-  @media screen and (min-width: rem($mobile)) {
+  @media (width > rem($mobile)) {
     @content;
   }
 }
 
-@mixin mobile-s {
-  @media screen and (max-width: rem($mobile-s)) {
+@mixin mobile {
+  @media (width <= rem($mobile)) {
     @content;
   }
 }
 
 @mixin mobile-s-above {
-  @media screen and (min-width: rem($mobile-s)) {
+  @media (width > rem($mobile-s)) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media (width <= rem($mobile-s)) {
     @content;
   }
 }
@@ -54,11 +54,13 @@
   $min_width: map.get($screen-sizes, $size);
 
   @if $min_width == null {
-    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
-  }
-
-  @media screen and (min-width: rem($min_width)) {
-    @content;
+    @media (min-width: rem($size)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: rem($min_width)) {
+      @content;
+    }
   }
 }
 
@@ -66,11 +68,13 @@
   $max_width: map.get($screen-sizes, $size);
 
   @if $max_width == null {
-    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
-  }
-
-  @media screen and (max-width: rem($max_width)) {
-    @content;
+    @media (max-width: rem($size)) {
+      @content;
+    }
+  } @else {
+    @media (max-width: rem($max_width)) {
+      @content;
+    }
   }
 }
 
@@ -78,11 +82,13 @@
   $max_width: map.get($screen-sizes, $size);
 
   @if $max_width == null {
-    @error "Размер `#{$size}` не найден в карте `$container-sizes`.";
-  }
-
-  @media screen and (max-width: rem($max_width - 1)) {
-    @content;
+    @media (max-width: rem($size - 1)) {
+      @content;
+    }
+  } @else {
+    @media (max-width: rem($max_width - 1)) {
+      @content;
+    }
   }
 }
 
@@ -105,5 +111,11 @@
         @content;
       }
     }
+  }
+}
+
+@mixin color-scheme($colorScheme: 'dark') {
+  @media (prefers-color-scheme: $colorScheme) {
+    @content;
   }
 }

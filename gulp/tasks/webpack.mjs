@@ -5,7 +5,7 @@
  */
 
 // Библиотеки
-import { dest, src, watch } from 'gulp' // gulp плагин
+import { dest, series, src, watch } from 'gulp' // gulp плагин
 import plumber from 'gulp-plumber' // перехватывает ошибки
 import notify from 'gulp-notify' // уведомляет об ошибках
 import gulpif from 'gulp-if' // вызывает функции по условию

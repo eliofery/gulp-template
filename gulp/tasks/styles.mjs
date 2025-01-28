@@ -14,10 +14,11 @@ import gulpSass from 'gulp-sass' // препроцессор sass
 import postcss from 'gulp-postcss' // позволяет использовать PostCSS для обработки CSS-файлов
 import autoPrefixer from 'autoprefixer' // автоматически добавляет префиксы для поддержки старых браузеров
 import cssnano from 'cssnano' // минифицирует css файл
-import postcssCustomMedia from 'postcss-custom-media' // группирует стили под общими медиа запросами
+import postcssCustomMedia from 'postcss-custom-media' // позволяет вам определять @custom-media
+import postcssMediaMinMax from '@csstools/postcss-media-minmax' // переводит новый формат диапазона в медиазапросах в старый
+import sortMediaQueries from 'postcss-sort-media-queries' // группирует стили под общими медиа запросами
 import comments from 'postcss-discard-comments' // группирует стили под общими медиа запросами
 import cssImport from 'postcss-import' // импорт css файлов
-import { pugBuild } from './pug.mjs' // чтобы pug обновлял критические стили
 
 // Конфиги
 import config from '../config.mjs'
@@ -51,13 +52,19 @@ export const stylesBuild = () => {
     ) // проходит по всем файлам в scss, подключенным через шаблон /**/*
     .pipe(
       sass.sync({
-        includePaths: ['./node_modules'], // ищет зависимости в node_modules, например normalize.css
+        // Ищет зависимости в node_modules, не работает для @use
+        // кроме __critical.scss, так как его обрабатывает сам pug.
+        // @use '../../node_modules/highlight.js/styles/a11y-light.css';
+        // @import 'highlight.js/styles/a11y-light.css';
+        includePaths: ['./node_modules'],
       }),
     )
     .pipe(
       postcss([
         cssImport(),
-        postcssCustomMedia(), // объединяет медиа запросы
+        postcssCustomMedia(), // позволяет вам определять @custom-media
+        postcssMediaMinMax(), // переводит новый формат диапазона в медиазапросах в старый
+        sortMediaQueries({ sort: 'desktop-first' }), // объединяет медиа запросы
         autoPrefixer(), // автопрефиксер
         minify, // минификация
         clear, // очистка комментариев
@@ -68,6 +75,4 @@ export const stylesBuild = () => {
 }
 
 // Слежение за изменением файлов
-export const stylesWatch = () => {
-  watch(`${config.src.style}/**/*.{scss,sass}`, series(stylesBuild, pugBuild))
-}
+export const stylesWatch = () => watch(`${config.src.style}/**/*.{scss,sass}`, stylesBuild)
