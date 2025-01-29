@@ -1,0 +1,54 @@
+//- Адаптивное изображение
+//- Пример: +picture("/img/picture@1x.png", "/img/picture-tablet@1x.png", "/img/picture-desktop@1x.png") 
+mixin picture(mobile, tablet="", desktop="")
+  //- Поддерживаемые форматы изображений для адаптации
+  - var formatRetina = [".jpg", ".jpeg", ".png"];
+
+  //- Изменяем имя для ретина изображений
+  - var mobile2x = mobile.replace("@1x", "@2x");
+  if tablet.length
+    - var tablet2x = tablet.replace("@1x", "@2x");
+  if desktop.length
+    - var desktop2x = desktop.replace("@1x", "@2x");
+
+  each format in formatRetina
+    if mobile.includes(format)
+      //- Изменяем расширение изображения в webp
+      - var webpMobile = mobile.replace(format, ".webp");
+      - var webpMobile2x = mobile2x.replace(format, ".webp");
+      
+      if tablet.length
+        - var webpTablet = tablet.replace(format, ".webp");
+        - var webpTablet2x = tablet2x.replace(format, ".webp");
+          
+      if desktop.length
+        - var webpDesktop = desktop.replace(format, ".webp");
+        - var webpDesktop2x = desktop2x.replace(format, ".webp");
+      
+      //- Изменяем расширение изображения в avif
+      - var avifMobile = mobile.replace(format, ".avif");
+      - var avifMobile2x = mobile2x.replace(format, ".avif");
+      
+      if tablet.length
+        - var avifTablet = tablet.replace(format, ".avif");
+        - var avifTablet2x = tablet2x.replace(format, ".avif");
+      
+      if desktop.length
+        - var avifDesktop = desktop.replace(format, ".avif");
+        - var avifDesktop2x = desktop2x.replace(format, ".avif");
+
+      //- Оборачиваем изображение в тег picture
+      picture
+        if desktop.length
+          source(media="(min-width: 1024px)", srcset=avifDesktop + " 1x, " + avifDesktop2x + " 2x")
+          source(media="(min-width: 1024px)", srcset=webpDesktop + " 1x, " + webpDesktop2x + " 2x")
+          source(media="(min-width: 1024px)", srcset=desktop + " 1x, " + desktop2x + " 2x")
+
+        if tablet.length
+          source(media="(min-width: 768px)", srcset=avifTablet + " 1x, " + avifTablet2x + " 2x")
+          source(media="(min-width: 768px)", srcset=webpTablet + " 1x, " + webpTablet2x + " 2x")
+          source(media="(min-width: 768px)", srcset=tablet + " 1x, " + tablet2x + " 2x")
+      
+        source(type="image/avif", srcset=avifMobile + " 1x, " + avifMobile2x + " 2x")
+        source(type="image/webp", srcset=webpMobile + " 1x, " + webpMobile2x + " 2x")
+        img(src=mobile, srcset=mobile2x + " 2x", width, height, alt, loading="lazy")&attributes(attributes)

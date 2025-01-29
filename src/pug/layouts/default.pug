@@ -1,0 +1,48 @@
+include ../data/*.pug
+include ../components/*.pug
+
+block variables
+  - var pageTitle = "Укажите заголовок";
+
+doctype html
+html.no-js(lang="ru")
+  head
+    include ../parts/head.pug
+
+  body
+    if (env === "prod")
+      //- Google Analytics noscript
+      noscript
+        iframe(src="https://www.googletagmanager.com/ns.html?id=#{google}", height="0", width="0", style="display:none;visibility:hidden")
+
+      //- Yandex metrica noscript
+      noscript
+        img(src="https://mc.yandex.ru/watch/#{yandex}", style="position:absolute; left:-9999px;", height="0", width="0", alt="") 
+
+    div(hidden)
+      include ../../assets/icons/sprite-mono.svg
+      include ../../assets/icons/sprite-multi.svg
+
+    <!--[if IE]>
+    p.browser-upgrade.
+      Вы используете #[strong устаревший] браузер, сайт может отображаться некорректно.<br>
+      Пожалуйста #[a(rel="nofollow", href="https://browsehappy.com/", target="_blank") обновите]!
+    <![endif]-->
+
+    noscript
+      p.browser-upgrade.
+        #[b Javascript] отключен, некоторые функции сайта недоступны.<br>
+        Пожалуйста #[a(rel="nofollow", href="https://support.google.com/adsense/answer/12654", target="_blank") включите javascript]!<br>
+
+    block header
+      include ../parts/header.pug
+
+    main
+      block content
+
+    block footer
+      include ../parts/footer.pug
+
+    block scripts
+      script(src="./js/main.js?v=" + siteVersion, type="module")
+        

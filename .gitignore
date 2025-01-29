@@ -1,8 +1,8 @@
-.idea/
-.vscode/
-node_modules/
-bin/
-build/
-
-src/assets/fonts/*
-!src/assets/fonts/.gitkeep
+.idea
+.vscode
+node_modules
+build
+.eslintcache
+src/libs/**
+src/libs/*
+!src/libs/.gitkeep

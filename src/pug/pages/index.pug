@@ -1,0 +1,400 @@
+extends ../layouts/default.pug
+
+block variables
+  - var pageTitle = "Gulp сборка";
+  - var pageDesc = "для продуктивной верстки";
+  - var ogType = "website";
+
+block header
+  style.
+    body {
+      font-size: 22px;
+    }
+
+    main {
+      padding-bottom: 40px;
+
+      word-wrap: break-word;
+    }
+
+    ul ul {
+      margin-bottom: 20px;
+    }
+
+    em {
+      color: #636363;
+      font-size: 16px;
+      font-style: normal;
+      letter-spacing: -0.8px;
+    }
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      padding: 100px 0;
+
+      background-color: #eeeeee;
+      overflow: hidden;
+    }
+
+    .header__container {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      max-width: 1530px;
+    }
+
+    .header__promo {
+      position: relative;
+      z-index: 1;
+      width: 60%;
+    }
+
+    .header__title {
+      margin: 0;
+      font-size: 75px;
+      font-weight: 500;
+      line-height: 1.1;
+      text-shadow: -1px 1px 2px white;
+    }
+
+    .header__logo {
+      position: absolute;
+      right: 0;
+      z-index: 0;
+
+      width: 55%;
+    }
+
+    .content {
+      padding: 60px 0;
+    }
+
+    h2 {
+      font-size: 60px;
+    }
+
+    h3 {
+      font-size: 40px;
+    }
+
+    code {
+      display: block;
+      max-width: 100%;
+      padding: 20px 30px;
+      overflow-x: auto;
+      font-size: 18px;
+
+      background-color: #eeeeee;
+    }
+
+    b, strong {
+      color: #da0414;
+      font-weight: 500;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+
+      color: #fff;
+      font-size: 20px;
+
+      background-color: #da0414;
+      border: none;
+
+      transition: all 0.3s ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      background-color: #bb0815;
+    }
+
+    @media (max-aspect-ratio: 10/8) {
+      .header {
+        height: auto;
+      }
+
+      .header__title {
+        font-size: 55px;
+      }
+
+      .content {
+        padding: 0 0 30px;
+      }
+
+      h2 {
+        font-size: 45px;
+      }
+
+      h3 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .header__logo {
+        display: none;
+      }
+
+      .header__promo {
+        width: 100%;
+        word-break: break-word;
+        text-align: center;
+      }
+    }
+
+block content
+  header.header
+    .container.header__container
+      .header__promo
+        h1.header__title Gulp сборка для продуктивной верстки
+        em ver. 0.1.13
+      img.header__logo(src="img/build-logo.svg", width="512", height="512", alt="Логотип сборки", loading="lazy")
+
+  section.content
+    .container
+      h2 Введение
+      p Цель данной сборки, обеспечить комфортную работу с минимальной начальной настройкой проекта.
+
+      h3 Основа сборки
+      p Сборка содержит шаблонизатор #[b Pug], препроцессор #[b SCSS], сборщик модулей #[b Webpack].
+
+      h3 Особенности сборки
+      ul
+        li Оптимизация под Page Speed
+          ul
+            li Отложенная загрузка
+            li Критические стили
+
+        li Базовая SEO оптимизация
+          ul
+            li Open Graph / Twitter Cards
+            li JSON-LD микроразметка
+            li Google Analytics / Yandex Metrika
+
+        li Pug шаблонизатор
+          ul
+            li Улучшенный фильтр markdown-it
+            li Возможность добавлять свои фильтры на примере фильтра special-chars
+            li Работа с json данными
+
+        li SCSS препроцессор
+          ul
+
+        li Webpack сборщик
+          ul
+            li Возможность использовать новый формат JS по максимуму
+            li Оптимизация кода через Babel
+
+        li SVG спрайты
+          ul
+            li Цветные
+            li Черно-белые
+
+        li Оптимизированные изображения
+          ul
+            li Генерация webp и avif форматов
+
+        li Настроенные линтеры
+          ul
+            li Stylelint
+            li Pug-lint
+            li ES-Lint
+            li Prettier
+            li Editorconfig
+
+        li Автоматическая генерация favicons
+
+
+      h2 Инструкция по установке
+      h3 Шаг 1
+      p Скачать или клонировать #[b Gulp сборку].
+      :markdown-it
+        ```bash
+        git clone git@github.com:eliofery/gulp-template.git
+        ```
+
+      h3 Шаг 2
+      p Установить зависимости.
+      :markdown-it
+        ```bash
+        sudo apt update && sudo apt install graphicsmagick
+        npm i
+        ```
+
+      h3 Шаг 3
+      p Загрузите свою svg favicon в каталог #[b ./src/assets/favicons] с именем #[b icon.svg].
+      p Favicon должен быть размером не менее #[b 512x512], например.
+      :markdown-it
+        ```svg
+        <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">...</svg>
+        ```
+      p При сборке проекта на основе #[b icon.svg] будут созданы другие необходимые favicons.
+
+      h3 Шаг 4
+      p Отредактировать файл #[b package.json], изменив название, описание, версию проекта, ссылки на репозиторий и т.д.
+      p Внести изменения в файл #[b ./gulp/config.js], в разделе #[b replacement], согласно наименованию вашего проекта. Изменять следует только свойство #[b new], например:
+      :markdown-it
+        ```js
+        ...
+        // Замена текста в файлах
+        replacement: {
+          env: { old: 'dev', new: 'prod' },
+          url: { old: 'http://localhost', new: 'https://site.domen' },
+          title: { old: 'Название сайта', new: 'Новое имя сайта' },
+          desc: { old: 'Описание сайта', new: 'Новое описание сайта' },
+          version: { old: '1.0.0', new: '2.0.0' },
+          color: { old: '#000', new: '#777' },
+          google: { old: 'GTM-XXXXXX', new: 'GTX-325264' },
+          yandex: { old: 'XXXXXX', new: 'jsdhgy7562' },
+        },
+        ...
+        ```
+      p #[b Gulp] будет искать значения прописанные в параметрах #[b old] и менять их на значения параметров #[b new], в файлах:
+      :markdown-it
+        ```js
+        // Файлы в которых производится замена текста
+        files: [
+          `${srcPath}}/assets/manifest.json`,
+          `${srcPath}}/pug/data/config.pug`,
+          `${srcPath}/pug/pages/index.pug`,
+        ],
+        ``` 
+      p После чего выполните команду, которая заменит текст:
+      :markdown-it
+        ```bash
+        npm run replaces
+        ```        
+      p Или, чтобы заменить текст и автоматически удалить промо страницу с инструкцией, выполните команду. 
+      :markdown-it
+        ```bash
+        npm run preperate
+        ```
+
+      h3 Шаг 5
+      p Теперь вы готовы приступить к верстке своего проекта.
+
+      h4.
+        Соберет проект и запустит Live Server в режиме разработки.
+        Файлы не будут минифицированы, а картинки оптимизированы.
+      :markdown-it
+        ```bash        
+        npm run dev
+        ```
+
+      h4.
+        Соберет проект в режиме продакшн.
+        Файлы будут минифицированы, а картинки оптимизированы.
+      :markdown-it
+        ```bash        
+        npm run build
+        ```      
+
+      h4.
+        Запустит Live Server без компиляции проекта.
+        Если не хочется заново компилировать проект, а только запустить сервер.
+      :markdown-it
+        ```bash       
+        npm run proxy
+        ```
+
+      hr
+
+      p Если при сборке возникнет ошибка: #[b DSO support routines:DLFCN_LOAD:could not load the shared library:dso_dlfcn.c:185:filename(libproviders.so)].
+
+      p Обнулите значение переменной #[b OPENSSL_CONF]:
+      :markdown-it
+        ```bash
+        export OPENSSL_CONF=/dev/null
+        ```
+
+
+      h2 Примеры верстки с Pug
+      h3 Json данные в Pug
+      p Хранятся в каталоге #[b ./src/pug/data]. Например файл #[b mainNav.json].
+      p Чтобы получить доступ к его значениям, нужно обратиться к глобальной переменной #[b jsonData], которая отвечает за вывод данных из #[b json] файлов, хранящихся в каталоге #[b data].
+
+      :markdown-it
+        ```pug
+        jsonData.имя_файла
+        ```
+
+      p Получение содержимого из файла #[b mainNav.json] будет выглядеть следующим образом:
+
+      :markdown-it
+        ```pug
+        jsonData.mainNav
+        ```
+
+      h3 Вывода навигации
+      p Рассмотрим пример вывода навигации на основе #[b json] данных из файла #[b mainNav.json].
+      p Ознакомиться с содержимым файла #[b mainNav.json] можно по пути #[b ./src/pug/data/mainNav.json].
+      :markdown-it
+        ```html 
+        ul
+          each item, index in jsonData.mainNav.items
+            li #{ index }
+            li #{ item.title }
+  
+            if item.links
+              ul
+              each link in item.links
+                li #{ link.title }
+                li #{ link.link }
+        ```
+
+      h3 Вывод code
+      p Рассмотрим пример вывода разметки в теге code.
+      pre
+        code
+          :special-chars
+            pre
+              code
+                :special-chars
+                  <div>
+                    Тут разметка которая экранируется
+                  </div>
+            
+            // Короткая версия конструкции выше
+            :markdown-it
+              ```html 
+              <div>
+                Тут разметка которая экранируется
+              </div>
+              ```
+
+      h3 Markdown разметка
+      p Рассмотрим пример вывода Markdown разметки.
+      pre
+        code
+          :special-chars
+            :markdown-it(inline) **текст**
+              
+            :markdown-it
+              Многострочный **текст**
+            
+            include:markdown-it ../markdown/docs.md
+  
+            :markdown-it
+              ```js
+              var codeBlocks;
+              ```
+
+  .container
+    button.button Вернуться наверх

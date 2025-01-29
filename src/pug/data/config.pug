@@ -1,0 +1,19 @@
+//- dev или prod
+- var env = "dev";
+
+- var siteVersion = "0.1.12";
+- var siteColor = "#000";
+
+- var siteUrl = "http://localhost:3000";
+- var baseUrl = "/";
+- var siteTitle = "Название проекта";
+- var siteDescription = "Описание проекта";
+
+- var google = "GTM-XXXXXX";
+- var yandex = "XXXXXX";
+
+//- Актуально если сборка отправляется в github pages
+//- gulp-template - имя репозитория, который отправляется в github page
+//- Закомментируйте условие или измените ссылку на свою
+if (env === "prod")
+  - var baseUrl = "/gulp-template/";
