@@ -1,6 +1,6 @@
 [
   {
-    "image": "/img/news/new1.jpg",
+    "image": "img/news/new1.jpg",
     "title": "Global Climate Summit Addresses Urgent Climate Action",
     "description": "World leaders gathered at the Global Climate Summit to discuss urgent climate action, emissions reductions, and renewable energy targets.",
     "summary": [
@@ -23,7 +23,7 @@
     }
   },
   {
-    "image": "/img/news/new2.jpg",
+    "image": "img/news/new2.jpg",
     "title": "A Decisive Victory for Progressive Policies",
     "description": "Politics",
     "actions": {
@@ -32,7 +32,7 @@
     }
   },
   {
-    "image": "/img/news/new3.jpg",
+    "image": "img/news/new3.jpg",
     "title": "Tech Giants Unveil Cutting-Edge AI Innovations",
     "description": "Technology",
     "actions": {
@@ -41,7 +41,7 @@
     }
   },
   {
-    "image": "/img/news/new4.jpg",
+    "image": "img/news/new4.jpg",
     "title": "COVID-19 Variants",
     "description": "Health",
     "actions": {

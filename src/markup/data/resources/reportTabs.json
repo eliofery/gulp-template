@@ -7,7 +7,7 @@
         "title": "Quantum Computing Whitepaper",
         "description": "Provides technical specifications and requirements for implementing quantum computing systems.",
         "content": {
-          "image": "/img/resources/resource3.jpg",
+          "image": "img/resources/resource3.jpg",
           "title": "Quantum Computing Whitepaper",
           "description": "An in-depth whitepaper exploring the principles, applications, and potential impact of quantum computing.",
           "list": [
@@ -31,7 +31,7 @@
         "title": "Space Exploration Whitepaper",
         "description": "Explores Mars colonization, asteroid resource potential, and space tourism.",
         "content": {
-          "image": "/img/resources/resource4.jpg",
+          "image": "img/resources/resource4.jpg",
           "title": "Space Exploration Whitepaper",
           "description": "An in-depth whitepaper covering the latest advancements in space exploration, including Mars missions and asteroid mining.",
           "list": [
@@ -60,7 +60,7 @@
         "title": "Quantum Computing Whitepaper",
         "description": "Provides technical specifications and requirements for implementing quantum computing systems.",
         "content": {
-          "image": "/img/resources/resource3.jpg",
+          "image": "img/resources/resource3.jpg",
           "title": "Quantum Computing Whitepaper",
           "description": "An in-depth whitepaper exploring the principles, applications, and potential impact of quantum computing.",
           "list": [
@@ -89,7 +89,7 @@
         "title": "Space Exploration Whitepaper",
         "description": "Explores Mars colonization, asteroid resource potential, and space tourism.",
         "content": {
-          "image": "/img/resources/resource4.jpg",
+          "image": "img/resources/resource4.jpg",
           "title": "Space Exploration Whitepaper",
           "description": "An in-depth whitepaper covering the latest advancements in space exploration, including Mars missions and asteroid mining.",
           "list": [

@@ -4,7 +4,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -24,7 +24,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },
@@ -44,7 +44,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -69,7 +69,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -89,7 +89,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -109,7 +109,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -134,7 +134,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },
@@ -154,7 +154,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },
@@ -174,7 +174,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },
@@ -199,7 +199,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -219,7 +219,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -239,7 +239,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -264,7 +264,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },
@@ -284,7 +284,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -304,7 +304,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -329,7 +329,7 @@
     "items": [
       {
         "author": {
-          "image": "/img/team/team4.png",
+          "image": "img/team/team4.png",
           "name": "Astronomer X",
           "department": "Space Exploration"
         },
@@ -349,7 +349,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team2.png",
+          "image": "img/team/team2.png",
           "name": "John Techson",
           "department": "Quantum Computing"
         },
@@ -369,7 +369,7 @@
       },
       {
         "author": {
-          "image": "/img/team/team3.png",
+          "image": "img/team/team3.png",
           "name": "Sarah Ethicist",
           "department": "AI Ethics"
         },

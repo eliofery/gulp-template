@@ -152,7 +152,7 @@ const changeIncludes = () =>
 const envSet = () => {
   const pattern = /(- (var|let|const) env = ")(prod|dev)(";?)/g
 
-  return src(`${config.src.markup}/config.pug`)
+  return src(`${config.src.markup.root}/_config.pug`)
     .pipe(gulpif(config.isDev, replace(pattern, '$1dev$4')))
     .pipe(gulpif(config.isProd, replace(pattern, '$1prod$4')))
     .pipe(dest(file => file.base))
@@ -162,7 +162,7 @@ const envSet = () => {
 const versionSet = () => {
   const pattern = /(- (var|let|const) version = ")(.*)(";?)/g
 
-  return src(`${config.src.markup}/config.pug`)
+  return src(`${config.src.markup.root}/_config.pug`)
     .pipe(replace(pattern, `$1${config.version}$4`))
     .pipe(dest(file => file.base))
 }
