@@ -30,10 +30,10 @@ body {
 
   min-width: rem($minViewportWidth);
 
-  color: rgb(var(--color-light));
+  color: rgb(var(--color-dark));
   font-family: var(--font-family-base);
 
-  background-color: rgb(var(--color-dark));
+  background-color: rgb(var(--color-light));
 }
 
 .wrapper {
@@ -58,7 +58,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: rgb(var(--color-light));
+  color: rgb(var(--color-dark));
 }
 
 h1,
@@ -134,7 +134,7 @@ a {
 
 :focus-visible {
   border-radius: rem(12);
-  outline: rem(2) dashed rgb(var(--color-light));
+  outline: rem(2) dashed rgb(var(--color-dark));
   outline-offset: rem(4);
 
   transition-duration: 0s !important;
