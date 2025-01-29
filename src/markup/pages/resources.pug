@@ -3,7 +3,7 @@ extends ../layouts/_default.pug
 block variables
   - const pageTitle = "Resources page";
   - const pageDescription = "Unlock a World of Knowledge";
-  - const pageLink = "/resources.html";
+  - const pageLink = "resources.html";
 
 block content
   section.hero-alt(aria-labelledby="resources-title")
@@ -113,5 +113,5 @@ block content
                       div.report-card__description
                         p #{item.description}
                       div.report-card__actions
-                        a.button.report-cart__details-link(href="/") View Details
-                        a.button.button--dark-gray.report-cart__details-link(href="/", download) Download PDF Now
+                        a.button.report-cart__details-link(href="") View Details
+                        a.button.button--dark-gray.report-cart__details-link(href="", download) Download PDF Now

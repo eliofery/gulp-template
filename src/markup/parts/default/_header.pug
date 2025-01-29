@@ -1,13 +1,13 @@
 header.header(data-js-header)
   div.header__promo
     div.container.header__promo-inner
-      a.header__promo-link(href="/")
+      a.header__promo-link(href="")
         span Subscribe to our Newsletter For New & latest Blogs and Resources #{ogType}
         +icon('icon-arrow-top-right')(width="24", height="24")
 
   div.header__body
     div.container.header__body-inner
-      a.logo.header__logo(href="/", title="Home", aria-label="Home")
+      a.logo.header__logo(href="", title="Home", aria-label="Home")
         img.logo__image(src="img/logo.svg", width="179", height="50", alt="FutureTech")
       div.header__overlay(data-js-header-overlay)
         nav.header__menu
@@ -18,7 +18,7 @@ header.header(data-js-header)
                   span.header__menu-link.is-active #{item.title}
                 else
                   a.header__menu-link(href=item.link) #{item.title}
-        a.button.button--accent.header__contact-us-link(href="/contacts.html") Contact Us
+        a.button.button--accent.header__contact-us-link(href="contacts.html") Contact Us
       button.visible-mobile.burger-button.header__burger-button(
         type="button",
         title="Open menu",

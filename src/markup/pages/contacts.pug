@@ -3,7 +3,7 @@ extends ../layouts/_default.pug
 block variables
   - const pageTitle = "Contacts page";
   - const pageDescription = "Phone, address company";
-  - const pageLink = "/contact.html";
+  - const pageLink = "contact.html";
 
 block content
   section.contacts(aria-labelledby="contacts-title")
@@ -45,13 +45,13 @@ block content
               div.contacts-card__soc1als.soc1als.soc1als--3-cols
                 ul.soc1als__list
                   li.soc1als__item
-                    a.soc1als__link(href="/", target="_blank", title="Twitter")
+                    a.soc1als__link(href="", target="_blank", title="Twitter")
                       +icon('icon-twitter')(width="24", height="24")
                   li.soc1als__item
-                    a.soc1als__link(href="/", target="_blank", title="Medium")
+                    a.soc1als__link(href="", target="_blank", title="Medium")
                       +icon('icon-medium')(width="24", height="24")
                   li.soc1als__item
-                    a.soc1als__link(href="/", target="_blank", title="Linkedin")
+                    a.soc1als__link(href="", target="_blank", title="Linkedin")
                       +icon('icon-linkedin')(width="24", height="24")
     div.contacts__body
       div.list

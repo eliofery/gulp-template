@@ -1,18 +1,18 @@
 [
   {
     "title": "Home",
-    "link": "/"
+    "link": ""
   },
   {
     "title": "News",
-    "link": "/news.html"
+    "link": "news.html"
   },
   {
     "title": "Podcasts",
-    "link": "/podcasts.html"
+    "link": "podcasts.html"
   },
   {
     "title": "Resources",
-    "link": "/resources.html"
+    "link": "resources.html"
   }
 ]

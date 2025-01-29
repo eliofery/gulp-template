@@ -3,7 +3,7 @@ extends ../layouts/_default.pug
 block variables
   - const pageTitle = "Home page";
   - const pageDescription = "Explore the Frontiers of Artificial Intelligence";
-  - const pageLink = "/";
+  - const pageLink = "";
 
 block content
   section.hero(aria-labelledby="hero-title")
@@ -47,21 +47,21 @@ block content
         li.hero__advantages-item
           div.hero__advantages-card.advantages-card
             +icon('icon-advantages-news')(width="50", height="50")
-            a.advantages-card__link.circle-icon(href="/")
+            a.advantages-card__link.circle-icon(href="")
               h3.h6.advantages-card__title Latest News Updates
               p.advantages-card__subtitle Stay Current
             p.advantages-card__details Over 1,000 articles published monthly
         li.hero__advantages-item
           div.hero__advantages-card.advantages-card
             +icon('icon-advantages-expert')(width="50", height="50")
-            a.advantages-card__link.circle-icon(href="/")
+            a.advantages-card__link.circle-icon(href="")
               h3.h6.advantages-card__title Expert Contributors
               p.advantages-card__subtitle Trusted Insights
             p.advantages-card__details 50+ renowned AI experts on our team
         li.hero__advantages-item
           div.hero__advantages-card.advantages-card
             +icon('icon-advantages-global')(width="50", height="50")
-            a.advantages-card__link.circle-icon(href="/")
+            a.advantages-card__link.circle-icon(href="")
               h3.h6.advantages-card__title Global Readership
               p.advantages-card__subtitle Worldwide Impact
             p.advantages-card__details 2 million monthly readers
@@ -98,7 +98,7 @@ block content
           p.section__subtitle.tag A Knowledge Treasure Trove
           h2#blog-title.section__title Explore FutureTech's In-Depth Blog Posts
         div.section__actions
-          +button("View All Blogs", "/blog.html")(class="section__link")
+          +button("View All Blogs", "blog.html")(class="section__link")
     div.section__body.tabs(data-js-tabs)
       h3#blog-category-title.sr-only Blog category
       header.tabs__header

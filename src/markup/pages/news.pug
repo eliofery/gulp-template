@@ -3,7 +3,7 @@ extends ../layouts/_default.pug
 block variables
   - const pageTitle = "News page";
   - const pageDescription = "Explore the latest news from around the world";
-  - const pageLink = "/news.html";
+  - const pageLink = "news.html";
 
 block content
   section.hero-alt(aria-labelledby="new-title")
@@ -51,7 +51,7 @@ block content
                       )
                         +icon(`icon-${action}`)(class="blog-actions__icon " + isActive, width="24", height="24")
                         span #{newsFirst.actions[action]}
-              a.button.blog-card__link(href="/") Read More
+              a.button.blog-card__link(href="") Read More
         li.list__item
           div.container.news
             ul.news__list
