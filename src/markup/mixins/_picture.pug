@@ -1,11 +1,11 @@
 //- Адаптивное изображение
-//- Пример: +picture("/img/picture@1x.png")(width="200", height="200")
-//- Пример: +picture("/picture.png")
+//- Пример: +picture("img/picture@1x.png")(width="200", height="200")
+//- Пример: +picture("picture.png")
 //- Если не нужно выводить для какого то экрана уникальную картинку ставим false:
-//- Пример: +picture("/picture.png", isLaptop=false, isTablet=true, isMobile=false)
+//- Пример: +picture("picture.png", isLaptop=false, isTablet=true, isMobile=false)
 mixin picture(file, isLaptop=true, isTablet=true, isMobile=true)
-  //- (/foo/bar/baz/)(filename)(.ext) или
-  //- (/foo/bar/baz/)(filename@1x)(.ext) или
+  //- (foo/bar/baz/)(filename)(.ext) или
+  //- (foo/bar/baz/)(filename@1x)(.ext) или
   //- (/)(filename)(.ext) или
   //- (/)(filename@1x)(.ext)
   - const regex = /^(.*\/)([^/]+?)(?:@\d+x)?(\.[^.]+)$/;
