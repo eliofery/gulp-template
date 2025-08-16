@@ -18,7 +18,7 @@ const rootBuild = () =>
   )
 
 // Переносит в build/fonts
-const fontsBuild = () => src([`${config.src.assets.fonts}/**/*`]).pipe(dest(`${config.build.fonts}`))
+const fontsBuild = () => src([`${config.src.assets.fonts}/**/*`], { encoding: false }).pipe(dest(`${config.build.fonts}`))
 
 // Переносит в build/videos
 const videosBuild = () =>
